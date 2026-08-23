@@ -1,0 +1,413 @@
+/* =========================================
+   TOP ANNOUNCEMENT BAR
+========================================= */
+
+.top-bar {
+    height: 25px;
+
+    background: #0b281a;
+
+    color: #ffffff;
+
+    font-size: 10px;
+}
+
+.top-bar-inner {
+    max-width: 1400px;
+
+    height: 100%;
+
+    margin: 0 auto;
+
+    padding: 0 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.top-bar p {
+    margin: 0;
+
+    opacity: 0.9;
+}
+
+.top-bar-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.top-bar-links a {
+    color: #ffffff;
+
+    opacity: 0.9;
+}
+
+.top-bar-links a:hover {
+    opacity: 1;
+}
+
+
+/* =========================================
+   MAIN HEADER
+========================================= */
+
+.site-header {
+    width: 100%;
+    height: 72px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #eeeeee;
+
+    /*
+     * Navbar stays fixed at the top.
+     */
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+}
+
+/* =========================================
+   HEADER INNER
+========================================= */
+
+.header-inner {
+    width: 100%;
+
+    max-width: 1400px;
+
+    height: 100%;
+
+    margin: 0 auto;
+
+    padding: 0 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+}
+
+
+/* =========================================
+   LEFT NAVIGATION
+========================================= */
+
+.main-navigation {
+    position: absolute;
+
+    right: calc(50% + 110px);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+}
+
+.main-navigation a {
+    position: relative;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    color: #1d2721;
+
+    white-space: nowrap;
+
+    transition: color 0.2s ease;
+}
+
+.main-navigation a:hover {
+    color: #8c6a2f;
+}
+
+
+/* Navigation underline */
+
+.main-navigation a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -8px;
+
+    width: 0;
+
+    height: 1px;
+
+    background: #8c6a2f;
+
+    transition: width 0.2s ease;
+}
+
+.main-navigation a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================
+   CENTER LOGO
+========================================= */
+
+.site-logo {
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 145px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 2;
+}
+
+.site-logo img {
+    width: 135px;
+
+    height: auto;
+
+    display: block;
+}
+
+
+/* =========================================
+   RIGHT SIDE
+========================================= */
+
+.header-right {
+    position: absolute;
+
+    left: calc(50% + 110px);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+}
+
+
+/* =========================================
+   RIGHT NAVIGATION
+========================================= */
+
+.secondary-navigation {
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+}
+
+.secondary-navigation a {
+    position: relative;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    color: #1d2721;
+
+    white-space: nowrap;
+
+    transition: color 0.2s ease;
+}
+
+.secondary-navigation a:hover {
+    color: #8c6a2f;
+}
+
+
+/* =========================================
+   HEADER ICONS
+========================================= */
+
+.header-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+.header-icon {
+    width: 22px;
+
+    height: 22px;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    background: transparent;
+
+    color: #1d2721;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.header-icon:hover {
+    color: #8c6a2f;
+
+    transform: translateY(-1px);
+}
+
+.header-icon svg {
+    display: block;
+}
+
+
+/* =========================================
+   MOBILE MENU
+========================================= */
+
+.mobile-menu-toggle {
+    display: none;
+
+    width: 35px;
+
+    height: 35px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+
+    width: 22px;
+
+    height: 1px;
+
+    margin: 5px auto;
+
+    background: #1d2721;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .main-navigation {
+        gap: 18px;
+    }
+
+    .secondary-navigation {
+        gap: 18px;
+    }
+
+    .main-navigation a,
+    .secondary-navigation a {
+        font-size: 12px;
+    }
+
+    .header-right {
+        gap: 18px;
+    }
+
+    .header-actions {
+        gap: 13px;
+    }
+
+    .site-logo {
+        width: 130px;
+    }
+
+    .site-logo img {
+        width: 125px;
+    }
+}
+
+
+/* =========================================
+   MOBILE / SMALL TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .main-navigation,
+    .header-right {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+
+        margin-left: auto;
+    }
+
+    .header-inner {
+        padding: 0 20px;
+    }
+
+    .site-logo {
+        width: 125px;
+    }
+
+    .site-logo img {
+        width: 120px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .top-bar {
+        display: none;
+    }
+
+    .site-header {
+        height: 65px;
+    }
+
+    .site-logo {
+        width: 110px;
+    }
+
+    .site-logo img {
+        width: 105px;
+    }
+}
