@@ -1,0 +1,453 @@
+/* ==========================================================
+   SUGANDHWALE — PRODUCT PAGE
+   ========================================================== */
+
+.sw-product {
+    background: #f8f6f1;
+    color: #17382c;
+    min-height: 100vh;
+}
+
+
+/* ==========================================================
+   MAIN
+   ========================================================== */
+
+.sw-product-main {
+    width: min(1380px, calc(100% - 100px));
+    margin: 0 auto;
+    padding: 70px 0 120px;
+
+    display: grid;
+    grid-template-columns: 58% 42%;
+    align-items: center;
+}
+
+
+/* ==========================================================
+   IMAGE
+   ========================================================== */
+
+.sw-product-visual {
+    padding-right: 70px;
+}
+
+.sw-product-image {
+    width: 100%;
+    height: min(720px, 65vw);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f1eee7;
+}
+
+.sw-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/* ==========================================================
+   INFORMATION
+   ========================================================== */
+
+.sw-product-info {
+    max-width: 480px;
+    padding-left: 40px;
+}
+
+
+/* CATEGORY */
+
+.sw-product-category {
+    margin-bottom: 25px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+
+    color: #9a712d;
+}
+
+.sw-product-category a {
+    color: #9a712d;
+}
+
+
+/* TITLE */
+
+.sw-product-info h1 {
+    margin: 0;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(52px, 5vw, 78px);
+    font-weight: 400;
+    line-height: .95;
+    letter-spacing: -3px;
+
+    color: #17382c;
+}
+
+
+/* PRICE */
+
+.sw-product-price {
+    margin-top: 30px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 23px;
+
+    color: #17382c;
+}
+
+.sw-product-price del {
+    color: #999;
+    margin-right: 8px;
+}
+
+.sw-product-price ins {
+    text-decoration: none;
+}
+
+
+/* DESCRIPTION */
+
+.sw-product-intro {
+    max-width: 430px;
+    margin-top: 32px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.9;
+
+    color: #626860;
+}
+
+.sw-product-intro p {
+    margin: 0 0 12px;
+}
+
+
+/* ==========================================================
+   CART
+   ========================================================== */
+
+.sw-product-purchase {
+    margin-top: 38px;
+}
+
+.sw-cart-form {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0;
+}
+
+
+/* ==========================================================
+   QUANTITY CONTROL
+   ========================================================== */
+
+.sw-quantity {
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+
+    border: 1px solid #d5d1c8;
+    background: transparent;
+}
+
+
+.sw-quantity button {
+    width: 38px;
+    height: 52px;
+
+    padding: 0;
+    border: 0;
+
+    background: transparent;
+    color: #17382c;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+
+    cursor: pointer;
+
+    transition: background .2s ease;
+}
+
+.sw-quantity button:hover {
+    background: #eeeae2;
+}
+
+
+.sw-qty-input {
+    width: 42px;
+    height: 52px;
+
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    color: #17382c;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+
+    text-align: center;
+    outline: none;
+
+    -moz-appearance: textfield;
+}
+
+
+/* Remove Chrome spinner */
+
+.sw-qty-input::-webkit-outer-spin-button,
+.sw-qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* ==========================================================
+   ADD TO CART BUTTON
+   ========================================================== */
+
+.sw-add-to-cart {
+    height: 54px;
+
+    padding: 0 42px;
+
+    border: 1px solid #17382c;
+    border-radius: 0;
+
+    background: #17382c;
+    color: #fff;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        background .25s ease,
+        color .25s ease;
+}
+
+
+.sw-add-to-cart:hover {
+    background: transparent;
+    color: #17382c;
+}
+
+
+/* ==========================================================
+   BRAND NOTE
+   ========================================================== */
+
+.sw-product-note {
+    margin-top: 27px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+    color: #898d85;
+}
+
+.sw-product-note span {
+    margin-right: 8px;
+    color: #9a712d;
+}
+
+
+/* ==========================================================
+   PRODUCT STORY
+   ========================================================== */
+
+.sw-product-story {
+    width: min(1100px, calc(100% - 100px));
+    margin: 0 auto;
+
+    padding: 100px 0 130px;
+
+    display: grid;
+    grid-template-columns: 30% 70%;
+
+    border-top: 1px solid #dedbd3;
+}
+
+.sw-story-label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+
+    color: #9a712d;
+}
+
+.sw-story-content {
+    max-width: 700px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 24px;
+    line-height: 1.65;
+
+    color: #35483d;
+}
+
+.sw-story-content p {
+    margin: 0 0 25px;
+}
+
+
+/* ==========================================================
+   TABLET
+   ========================================================== */
+
+@media (max-width: 1000px) {
+
+    .sw-product-main {
+        width: calc(100% - 60px);
+        grid-template-columns: 1fr 1fr;
+        padding-top: 50px;
+    }
+
+    .sw-product-visual {
+        padding-right: 30px;
+    }
+
+    .sw-product-info {
+        padding-left: 25px;
+    }
+
+    .sw-product-info h1 {
+        font-size: 58px;
+    }
+
+    .sw-product-image {
+        height: 600px;
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media (max-width: 700px) {
+
+    .sw-product-main {
+        width: 100%;
+        display: block;
+        padding: 25px 0 75px;
+    }
+
+    .sw-product-visual {
+        padding: 0;
+    }
+
+    .sw-product-image {
+        width: 100%;
+        height: 105vw;
+        max-height: 520px;
+    }
+
+    .sw-product-info {
+        max-width: none;
+        padding: 42px 24px 0;
+    }
+
+    .sw-product-category {
+        margin-bottom: 18px;
+    }
+
+    .sw-product-info h1 {
+        font-size: clamp(45px, 13vw, 65px);
+        letter-spacing: -2px;
+    }
+
+    .sw-product-price {
+        margin-top: 23px;
+        font-size: 21px;
+    }
+
+    .sw-product-intro {
+        margin-top: 25px;
+        font-size: 13px;
+    }
+
+    .sw-cart-form {
+        width: 100%;
+    }
+
+    .sw-quantity {
+        flex-shrink: 0;
+    }
+
+    .sw-add-to-cart {
+        flex: 1;
+        padding: 0 15px;
+    }
+
+    .sw-product-story {
+        width: calc(100% - 48px);
+        display: block;
+        padding: 70px 0 80px;
+    }
+
+    .sw-story-content {
+        margin-top: 30px;
+        font-size: 20px;
+    }
+
+}
+
+
+/* ==========================================================
+   SMALL MOBILE
+   ========================================================== */
+
+@media (max-width: 400px) {
+
+    .sw-product-info {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .sw-quantity button {
+        width: 34px;
+    }
+
+    .sw-qty-input {
+        width: 36px;
+    }
+
+    .sw-add-to-cart {
+        font-size: 9px;
+        letter-spacing: 1.5px;
+    }
+
+    .sw-product-story {
+        width: calc(100% - 36px);
+    }
+
+}

@@ -1,0 +1,717 @@
+/* =========================================
+   PRODUCTS PAGE
+========================================= */
+
+.products-page {
+    background: #f7f5f0;
+    color: #19372c;
+    overflow: hidden;
+}
+
+
+/* =========================================
+   SHARED
+========================================= */
+
+.products-container {
+    width: min(1300px, calc(100% - 80px));
+    margin: 0 auto;
+}
+
+.products-eyebrow {
+    display: block;
+
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    color: #a27b3e;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.products-hero {
+    padding: 110px 30px 90px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% -20%,
+            rgba(185, 151, 92, 0.18),
+            transparent 50%
+        ),
+        #f7f5f0;
+}
+
+.products-hero-inner {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.products-hero .products-eyebrow {
+    margin-bottom: 24px;
+}
+
+.products-hero h1 {
+    margin: 0 0 25px;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(58px, 7vw, 96px);
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: -2px;
+
+    color: #17382c;
+}
+
+.products-hero h1 em {
+    font-weight: 400;
+    color: #a27b3e;
+}
+
+.products-hero p {
+    max-width: 600px;
+    margin: 0 auto;
+
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+
+    color: #687168;
+}
+
+
+/* =========================================
+   CATEGORY NAVIGATION
+========================================= */
+
+.products-navigation {
+    padding: 45px 0 0;
+}
+
+.products-nav-header {
+    margin-bottom: 25px;
+}
+
+.products-nav-header .products-eyebrow {
+    margin-bottom: 12px;
+}
+
+.products-nav-header p {
+    margin: 0;
+
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 15px;
+
+    color: #687168;
+}
+
+
+/* CATEGORY LIST */
+
+.products-category-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    border-top: 1px solid #d8d2c5;
+    border-left: 1px solid #d8d2c5;
+}
+
+.products-category {
+    min-height: 95px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 20px 28px;
+
+    border-right: 1px solid #d8d2c5;
+    border-bottom: 1px solid #d8d2c5;
+
+    text-decoration: none;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 20px;
+
+    color: #19372c;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+.products-category span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    color: #a27b3e;
+}
+
+.products-category:hover,
+.products-category.active {
+    background: #17382c;
+    color: #f7f5f0;
+}
+
+
+/* =========================================
+   PRODUCT SHOWCASE
+========================================= */
+
+.products-showcase {
+    padding: 100px 0 130px;
+}
+
+
+/* HEADER */
+
+.products-showcase-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    gap: 30px;
+
+    padding-bottom: 40px;
+
+    border-bottom: 1px solid #d8d2c5;
+}
+
+.products-showcase-header .products-eyebrow {
+    margin-bottom: 16px;
+}
+
+.products-showcase-header h2 {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(45px, 5vw, 72px);
+    font-weight: 500;
+    line-height: 0.95;
+
+    color: #17382c;
+}
+
+.products-showcase-header h2 em {
+    font-weight: 400;
+    color: #a27b3e;
+}
+
+.products-status {
+    margin: 0;
+
+    padding-bottom: 5px;
+
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    color: #8a7650;
+}
+
+
+/* =========================================
+   PRODUCT GRID
+========================================= */
+
+.products-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 30px 22px;
+
+    padding-top: 45px;
+}
+
+
+/* =========================================
+   PRODUCT CARD
+========================================= */
+
+.product-card {
+    min-width: 0;
+
+    background: #ffffff;
+
+    border: 1px solid #e1dbcf;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow: 0 18px 40px rgba(25, 55, 44, 0.10);
+}
+
+
+/* =========================================
+   PRODUCT IMAGE
+========================================= */
+
+.product-image {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 1 / 1.05;
+
+    overflow: hidden;
+
+    background: #ebe7dd;
+}
+
+.product-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+
+/* IMAGE PLACEHOLDER */
+
+.product-image-placeholder {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 25px;
+
+    color: #a27b3e;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #f4f0e7,
+            #e6dfd2
+        );
+}
+
+
+/* =========================================
+   PRODUCT INFORMATION
+========================================= */
+
+.product-info {
+    padding: 20px 20px 18px;
+}
+
+.product-category {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+    color: #a27b3e;
+}
+
+
+/* PRODUCT NAME */
+
+.product-info h3 {
+    min-height: 58px;
+
+    margin: 0 0 18px;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.15;
+
+    color: #17382c;
+}
+
+.product-info h3 a {
+    color: inherit;
+    text-decoration: none;
+
+    transition: color 0.25s ease;
+}
+
+.product-info h3 a:hover {
+    color: #a27b3e;
+}
+
+
+/* =========================================
+   PRODUCT BOTTOM
+========================================= */
+
+.product-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #e1dbcf;
+}
+
+
+/* PRICE */
+
+.product-price {
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #19372c;
+}
+
+.product-price del {
+    margin-right: 6px;
+    opacity: 0.5;
+}
+
+.product-price ins {
+    text-decoration: none;
+}
+
+
+/* ARROW */
+
+.product-arrow {
+    width: 36px;
+    height: 36px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #d6cdbc;
+    border-radius: 50%;
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+    color: #17382c;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.product-arrow:hover {
+    background: #17382c;
+
+    color: #ffffff;
+
+    transform: translateX(3px);
+}
+
+
+/* =========================================
+   COMING SOON / NO PRODUCTS
+========================================= */
+
+.products-coming-soon {
+    margin-top: 45px;
+
+    min-height: 360px;
+
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    align-items: center;
+
+    padding: 60px;
+
+    background: #ece8de;
+
+    border: 1px solid #ddd6c8;
+}
+
+.products-coming-soon-number {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 100px;
+
+    color: #a27b3e;
+}
+
+.products-coming-soon-content {
+    max-width: 550px;
+}
+
+.products-coming-soon-content .products-eyebrow {
+    margin-bottom: 18px;
+}
+
+.products-coming-soon h3 {
+    margin: 0 0 20px;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 50px;
+    font-weight: 500;
+    line-height: 1;
+
+    color: #17382c;
+}
+
+.products-coming-soon h3 em {
+    color: #a27b3e;
+}
+
+.products-coming-soon p {
+    margin: 0;
+
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+
+    color: #687168;
+}
+
+
+/* =========================================
+   PAGINATION
+========================================= */
+
+.products-pagination {
+    margin-top: 70px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.products-pagination ul {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.products-pagination a,
+.products-pagination span {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #d8d2c5;
+
+    text-decoration: none;
+
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 13px;
+
+    color: #19372c;
+
+    transition: 0.25s ease;
+}
+
+.products-pagination a:hover,
+.products-pagination .current {
+    background: #17382c;
+
+    border-color: #17382c;
+
+    color: #ffffff;
+}
+
+
+/* =========================================
+   CLOSING
+========================================= */
+
+.products-closing {
+    padding: 140px 30px;
+
+    text-align: center;
+
+    background: #17382c;
+}
+
+.products-closing-inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.products-closing .products-eyebrow {
+    margin-bottom: 25px;
+
+    color: #c8b488;
+}
+
+.products-closing h2 {
+    margin: 0 0 28px;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(50px, 6vw, 85px);
+    font-weight: 500;
+    line-height: 1;
+
+    color: #f7f5f0;
+}
+
+.products-closing h2 em {
+    font-weight: 400;
+    color: #c8a76c;
+}
+
+.products-closing p {
+    max-width: 550px;
+    margin: 0 auto;
+
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+
+    color: rgba(247, 245, 240, 0.7);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1050px) {
+
+    .products-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .products-category-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .products-container {
+        width: min(100% - 40px, 1300px);
+    }
+
+    .products-hero {
+        padding: 85px 20px 70px;
+    }
+
+    .products-hero h1 {
+        font-size: 56px;
+        letter-spacing: -1px;
+    }
+
+    .products-navigation {
+        padding-top: 30px;
+    }
+
+    .products-category-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .products-category {
+        min-height: 80px;
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    .products-showcase {
+        padding: 70px 0 90px;
+    }
+
+    .products-showcase-header {
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding-bottom: 30px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 22px 12px;
+
+        padding-top: 30px;
+    }
+
+    .product-info {
+        padding: 15px;
+    }
+
+    .product-info h3 {
+        min-height: 48px;
+
+        font-size: 19px;
+
+        margin-bottom: 14px;
+    }
+
+    .product-category {
+        font-size: 9px;
+    }
+
+    .product-arrow {
+        width: 32px;
+        height: 32px;
+    }
+
+    .products-coming-soon {
+        grid-template-columns: 1fr;
+
+        min-height: auto;
+
+        padding: 40px 25px;
+    }
+
+    .products-coming-soon-number {
+        margin-bottom: 25px;
+        font-size: 70px;
+    }
+
+    .products-coming-soon h3 {
+        font-size: 38px;
+    }
+
+    .products-closing {
+        padding: 100px 20px;
+    }
+
+}

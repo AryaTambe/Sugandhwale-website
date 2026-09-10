@@ -5,7 +5,7 @@ Author: Sugandhwale
 Description: Custom WordPress theme for Sugandhwale.
 Version: 1.0
 */
-
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
 /* Global reset */
 * {
     margin: 0;
@@ -36,4 +36,192 @@ a {
 
 button {
     font-family: inherit;
+}
+
+/* =========================================
+   SEARCH RESULTS
+========================================= */
+
+.search-page {
+    background: #f8f6f1;
+    min-height: 70vh;
+    padding: 80px 35px 100px;
+}
+
+.search-page-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.search-page-heading {
+    margin-bottom: 55px;
+}
+
+.search-page-heading span {
+    display: block;
+
+    margin-bottom: 14px;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: #8c6a2f;
+}
+
+.search-page-heading h1 {
+    margin: 0;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 42px;
+    font-weight: 400;
+
+    color: #17382c;
+}
+
+
+/* PRODUCTS */
+
+.search-products {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 35px;
+}
+
+.search-product-image {
+    display: block;
+
+    background: #f1eee7;
+
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+}
+
+.search-product-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    transition: transform .3s ease;
+}
+
+.search-product:hover .search-product-image img {
+    transform: scale(1.03);
+}
+
+
+.search-product-info {
+    padding-top: 18px;
+}
+
+.search-product-info h2 {
+    margin: 0 0 8px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 21px;
+    font-weight: 400;
+
+    color: #17382c;
+}
+
+.search-product-info h2 a {
+    color: inherit;
+}
+
+.search-product-price {
+    font-size: 14px;
+
+    color: #17382c;
+
+    margin-bottom: 15px;
+}
+
+.search-product-link {
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 1.5px;
+
+    color: #8c6a2f;
+}
+
+
+/* NO RESULTS */
+
+.search-no-results {
+    padding: 80px 0;
+
+    text-align: center;
+}
+
+.search-no-results h2 {
+    margin: 0 0 15px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 32px;
+    font-weight: 400;
+
+    color: #17382c;
+}
+
+.search-no-results p {
+    margin-bottom: 25px;
+
+    font-size: 14px;
+
+    color: #666;
+}
+
+.search-no-results a {
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 1.5px;
+
+    color: #8c6a2f;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .search-products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .search-page {
+        padding: 55px 20px 70px;
+    }
+
+    .search-page-heading {
+        margin-bottom: 35px;
+    }
+
+    .search-page-heading h1 {
+        font-size: 32px;
+    }
+
+    .search-products {
+        gap: 25px 15px;
+    }
+
+    .search-product-info h2 {
+        font-size: 18px;
+    }
+
 }

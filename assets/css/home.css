@@ -11,7 +11,7 @@
      * Increase this if you want the hero to stay
      * longer before the next section takes over.
      */
-    height: 1100px;
+    height: calc((100vw * 746 / 2048) + 250px);
 
     background: #f8f6f1;
 }
@@ -235,7 +235,7 @@
 @media (max-width: 900px) {
 
     .hero-wrapper {
-        height: 900px;
+        height: calc((100vw * 746 / 2048) + 180px);
     }
 
     .hero-slider {
@@ -271,7 +271,7 @@
 @media (max-width: 600px) {
 
     .hero-wrapper {
-        height: 750px;
+        height: calc((100vw * 746 / 2048) + 120px);
     }
 
     .hero-slider {

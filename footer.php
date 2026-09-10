@@ -37,35 +37,17 @@
             </p>
 
 
-            <!-- SOCIAL LINKS -->
+            <!-- SOCIAL -->
 
             <div class="footer-social">
 
                 <a
-                    href="#"
-                    aria-label="Instagram"
+                    href="https://www.instagram.com/sugandhwale_sachinam/"
+                    aria-label="Follow Sugandhwale on Instagram"
                     target="_blank"
                     rel="noopener"
                 >
-                    Instagram
-                </a>
-
-                <a
-                    href="#"
-                    aria-label="Facebook"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Facebook
-                </a>
-
-                <a
-                    href="#"
-                    aria-label="YouTube"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    YouTube
+                    Instagram ↗
                 </a>
 
             </div>
@@ -85,19 +67,19 @@
                 All Products
             </a>
 
-            <a href="#">
+            <a href="<?php echo esc_url(home_url('/products/?category=agarbatti')); ?>">
                 Agarbatti
             </a>
 
-            <a href="#">
+            <a href="<?php echo esc_url(home_url('/products/?category=perfumes')); ?>">
                 Perfumes
             </a>
 
-            <a href="#">
+            <a href="<?php echo esc_url(home_url('/products/?category=home-fragrance')); ?>">
                 Home Fragrance
             </a>
 
-            <a href="#">
+            <a href="<?php echo esc_url(home_url('/products/?category=pooja-essentials')); ?>">
                 Pooja Essentials
             </a>
 
@@ -112,7 +94,7 @@
 
             <h3>Company</h3>
 
-            <a href="<?php echo esc_url(home_url('/about/')); ?>">
+            <a href="<?php echo esc_url(home_url('/our-story/')); ?>">
                 Our Story
             </a>
 
@@ -143,7 +125,7 @@
 
             <h3>Customer Care</h3>
 
-            <a href="#">
+            <a href="<?php echo esc_url(home_url('/contact/')); ?>">
                 Contact Us
             </a>
 
@@ -182,13 +164,28 @@
                 info@sugandhwale.com
             </a>
 
-            <a href="tel:+910000000000">
-                +91 00000 00000
+            <a href="tel:+918291327076">
+                +91 82913 27076
             </a>
 
-            <span class="footer-location">
-                Mumbai, Maharashtra, India
-            </span>
+            <a
+                href="https://wa.me/918291327076"
+                target="_blank"
+                rel="noopener"
+            >
+                WhatsApp Us ↗
+            </a>
+
+            <a
+                href="https://maps.app.goo.gl/5EaEuFymgQeaNVCB6"
+                target="_blank"
+                rel="noopener"
+                class="footer-address"
+            >
+                Sugandhwale, 102, 1st floor, Shakuntal,
+                Beside Jipsi Corner, Shivaji Park,
+                Dadar (West), Mumbai - 400 028.
+            </a>
 
         </div>
 
@@ -226,8 +223,6 @@
             </div>
 
 
-            <!-- DEVELOPER CREDIT -->
-
             <p class="developer-credit">
                 Website Design & Development by Arya
             </p>
@@ -242,5 +237,4 @@
 <?php wp_footer(); ?>
 
 </body>
-
 </html>

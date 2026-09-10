@@ -11,9 +11,23 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
     <?php wp_head(); ?>
 
 </head>
+
 
 <body <?php body_class(); ?>>
 
@@ -34,15 +48,9 @@
 
         <div class="top-bar-links">
 
-            <a href="#">
-                Track Order
-            </a>
-
-            <span>|</span>
-
-            <a href="#">
+            <span>
                 Help Center
-            </a>
+            </span>
 
         </div>
 
@@ -74,7 +82,7 @@
                 Shop
             </a>
 
-            <a href="<?php echo esc_url(home_url('/about/')); ?>">
+            <a href="<?php echo esc_url(home_url('/our-story/')); ?>">
                 Our Story
             </a>
 
@@ -113,7 +121,7 @@
 
             <nav class="secondary-navigation">
 
-                <a href="<?php echo esc_url(home_url('/partnership/')); ?>">
+                <a href="<?php echo esc_url(home_url('/business-partner/')); ?>">
                     Business Partner (SBPP)
                 </a>
 
@@ -138,9 +146,10 @@
                 <!-- SEARCH -->
 
                 <button
-                    class="header-icon"
+                    class="header-icon search-toggle"
                     type="button"
                     aria-label="Search"
+                    aria-expanded="false"
                 >
 
                     <svg
@@ -168,70 +177,6 @@
                     </svg>
 
                 </button>
-
-
-                <!-- ACCOUNT -->
-
-                <a
-                    href="<?php echo esc_url(home_url('/my-account/')); ?>"
-                    class="header-icon"
-                    aria-label="Account"
-                >
-
-                    <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.7"
-                    >
-
-                        <circle
-                            cx="12"
-                            cy="7"
-                            r="4"
-                        />
-
-                        <path
-                            d="M5 21c0-3.9 3.1-7 7-7s7 3.1 7 7"
-                        />
-
-                    </svg>
-
-                </a>
-
-
-                <!-- WISHLIST -->
-
-                <a
-                    href="#"
-                    class="header-icon"
-                    aria-label="Wishlist"
-                >
-
-                    <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.7"
-                    >
-
-                        <path
-                            d="M20.8 8.7
-                            C20.8 13.5 12 20 12 20
-                            S3.2 13.5 3.2 8.7
-                            C3.2 5.9 5.2 4 7.7 4
-                            C9.3 4 10.8 4.8 12 6.1
-                            C13.2 4.8 14.7 4 16.3 4
-                            C18.8 4 20.8 5.9 20.8 8.7Z"
-                        />
-
-                    </svg>
-
-                </a>
 
 
                 <!-- CART -->
@@ -284,6 +229,8 @@
             class="mobile-menu-toggle"
             type="button"
             aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobile-navigation"
         >
 
             <span></span>
@@ -291,6 +238,82 @@
             <span></span>
 
         </button>
+
+    </div>
+
+
+    <!-- =========================
+         MOBILE NAVIGATION
+    ========================= -->
+
+    <nav
+        id="mobile-navigation"
+        class="mobile-navigation"
+        aria-hidden="true"
+    >
+
+        <a href="<?php echo esc_url(home_url('/')); ?>">
+            Home
+        </a>
+
+        <a href="<?php echo esc_url(home_url('/products/')); ?>">
+            Shop
+        </a>
+
+        <a href="<?php echo esc_url(home_url('/our-story/')); ?>">
+            Our Story
+        </a>
+
+        <a href="<?php echo esc_url(home_url('/academy/')); ?>">
+            Academy
+        </a>
+
+        <a href="<?php echo esc_url(home_url('/business-partner/')); ?>">
+            Business Partner (SBPP)
+        </a>
+
+        <a href="<?php echo esc_url(home_url('/blog/')); ?>">
+            Blog
+        </a>
+
+        <a href="<?php echo esc_url(home_url('/contact/')); ?>">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         SEARCH PANEL
+    ========================= -->
+
+    <div class="header-search-panel">
+
+        <form
+            role="search"
+            method="get"
+            action="<?php echo esc_url(home_url('/')); ?>"
+        >
+
+            <input
+                type="search"
+                name="s"
+                placeholder="Search products..."
+                aria-label="Search products"
+                autocomplete="off"
+            >
+
+            <input
+                type="hidden"
+                name="post_type"
+                value="product"
+            >
+
+            <button type="submit">
+                SEARCH
+            </button>
+
+        </form>
 
     </div>
 

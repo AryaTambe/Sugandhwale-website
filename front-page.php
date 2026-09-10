@@ -1,5 +1,9 @@
 <?php get_header(); ?>
 
+<?php
+$woocommerce_active = class_exists( 'WooCommerce' );
+?>
+
 <!-- =========================================
      HERO CAROUSEL
 ========================================= -->
@@ -294,7 +298,12 @@
 
             <!-- AGARBATTI -->
 
-            <a href="#" class="category-card">
+            <a href="<?php
+                $term = get_term_by( 'slug', 'agarbatti', 'product_cat' );
+                echo ( $woocommerce_active && $term && ! is_wp_error( $term ) )
+                    ? esc_url( get_term_link( $term ) )
+                    : esc_url( home_url( '/products/' ) );
+            ?>" class="category-card">
 
                 <div class="category-image">
                     <img
@@ -318,7 +327,12 @@
 
             <!-- PERFUMES -->
 
-            <a href="#" class="category-card">
+            <a href="<?php
+                $term = get_term_by( 'slug', 'perfumes', 'product_cat' );
+                echo ( $woocommerce_active && $term && ! is_wp_error( $term ) )
+                    ? esc_url( get_term_link( $term ) )
+                    : esc_url( home_url( '/products/' ) );
+            ?>" class="category-card">
 
                 <div class="category-image">
                     <img
@@ -342,7 +356,12 @@
 
             <!-- HOME FRAGRANCE -->
 
-            <a href="#" class="category-card">
+            <a href="<?php
+                $term = get_term_by( 'slug', 'home-fragrance', 'product_cat' );
+                echo ( $woocommerce_active && $term && ! is_wp_error( $term ) )
+                    ? esc_url( get_term_link( $term ) )
+                    : esc_url( home_url( '/products/' ) );
+            ?>" class="category-card">
 
                 <div class="category-image">
                     <img
@@ -366,7 +385,12 @@
 
             <!-- POOJA ESSENTIALS -->
 
-            <a href="#" class="category-card">
+            <a href="<?php
+                $term = get_term_by( 'slug', 'pooja-essentials', 'product_cat' );
+                echo ( $woocommerce_active && $term && ! is_wp_error( $term ) )
+                    ? esc_url( get_term_link( $term ) )
+                    : esc_url( home_url( '/products/' ) );
+            ?>" class="category-card">
 
                 <div class="category-image">
                     <img
@@ -414,7 +438,7 @@
 
             <!-- ACADEMY -->
 
-            <a href="#" class="category-card">
+            <a href="<?php echo esc_url( home_url( '/academy/' ) ); ?>" class="category-card">
 
                 <div class="category-image">
 
@@ -482,199 +506,111 @@
             <div class="best-sellers-grid">
 
 
-                <!-- PRODUCT 1 -->
+                <?php
+                if ( $woocommerce_active ) :
 
-                <article class="product-card">
+                    $best_sellers = new WP_Query(
+                        array(
+                            'post_type'      => 'product',
+                            'posts_per_page' => 4,
+                            'post_status'    => 'publish',
+                            'meta_key'       => 'total_sales',
+                            'orderby'        => 'meta_value_num',
+                            'order'          => 'DESC',
+                        )
+                    );
 
-                    <a href="#" class="product-image">
+                    if ( $best_sellers->have_posts() ) :
 
-                        <img
-                            src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/products/best-seller-1.jpg"
-                            alt="Saffron Sandal Agarbatti"
-                        >
+                        while ( $best_sellers->have_posts() ) :
+                            $best_sellers->the_post();
 
-                    </a>
+                            $product = wc_get_product( get_the_ID() );
 
+                            if ( ! $product ) {
+                                continue;
+                            }
 
-                    <div class="product-info">
+                            $rating       = (float) $product->get_average_rating();
+                            $review_count = (int) $product->get_review_count();
+                            ?>
 
-                        <h3>
-                            Saffron Sandal Agarbatti
-                        </h3>
+                            <article class="product-card">
 
+                                <a href="<?php the_permalink(); ?>" class="product-image">
 
-                        <div class="product-rating">
+                                    <?php if ( has_post_thumbnail() ) : ?>
 
-                            <span class="stars">
-                                ★★★★★
-                            </span>
+                                        <?php
+                                        the_post_thumbnail(
+                                            'woocommerce_thumbnail',
+                                            array(
+                                                'alt' => esc_attr( get_the_title() ),
+                                            )
+                                        );
+                                        ?>
 
-                            <span class="review-count">
-                                (568)
-                            </span>
+                                    <?php endif; ?>
 
-                        </div>
+                                </a>
 
 
-                        <div class="product-price">
-                            ₹299
-                        </div>
+                                <div class="product-info">
 
+                                    <h3>
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php the_title(); ?>
+                                        </a>
+                                    </h3>
 
-                        <a href="#" class="add-to-cart">
-                            ADD TO CART
-                        </a>
 
-                    </div>
+                                    <?php if ( $review_count > 0 ) : ?>
 
-                </article>
+                                        <div class="product-rating">
 
+                                            <span class="stars">
+                                                <?php echo esc_html( str_repeat( '★', max( 0, min( 5, (int) round( $rating ) ) ) ) ); ?>
+                                            </span>
 
-                <!-- PRODUCT 2 -->
+                                            <span class="review-count">
+                                                (<?php echo esc_html( $review_count ); ?>)
+                                            </span>
 
-                <article class="product-card">
+                                        </div>
 
-                    <a href="#" class="product-image">
+                                    <?php endif; ?>
 
-                        <img
-                            src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/products/best-seller-2.jpg"
-                            alt="Oudh Royal Perfume"
-                        >
 
-                    </a>
+                                    <div class="product-price">
+                                        <?php echo wp_kses_post( $product->get_price_html() ); ?>
+                                    </div>
 
 
-                    <div class="product-info">
+                                    <?php if ( $product->is_purchasable() && $product->is_in_stock() && $product->is_type( 'simple' ) ) : ?>
 
-                        <h3>
-                            Oudh Royal Perfume
-                        </h3>
+                                        <a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>" class="add-to-cart">
+                                            ADD TO CART
+                                        </a>
 
+                                    <?php else : ?>
 
-                        <div class="product-rating">
+                                        <a href="<?php the_permalink(); ?>" class="add-to-cart">
+                                            ADD TO CART
+                                        </a>
 
-                            <span class="stars">
-                                ★★★★★
-                            </span>
+                                    <?php endif; ?>
 
-                            <span class="review-count">
-                                (423)
-                            </span>
+                                </div>
 
-                        </div>
+                            </article>
 
+                        <?php endwhile; ?>
 
-                        <div class="product-price">
-                            ₹599
-                        </div>
+                        <?php wp_reset_postdata(); ?>
 
+                    <?php endif; ?>
 
-                        <a href="#" class="add-to-cart">
-                            ADD TO CART
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- PRODUCT 3 -->
-
-                <article class="product-card">
-
-                    <a href="#" class="product-image">
-
-                        <img
-                            src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/products/best-seller-3.jpg"
-                            alt="Sandalwood Reed Diffuser"
-                        >
-
-                    </a>
-
-
-                    <div class="product-info">
-
-                        <h3>
-                            Sandalwood Reed Diffuser
-                        </h3>
-
-
-                        <div class="product-rating">
-
-                            <span class="stars">
-                                ★★★★★
-                            </span>
-
-                            <span class="review-count">
-                                (312)
-                            </span>
-
-                        </div>
-
-
-                        <div class="product-price">
-                            ₹799
-                        </div>
-
-
-                        <a href="#" class="add-to-cart">
-                            ADD TO CART
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- PRODUCT 4 -->
-
-                <article class="product-card">
-
-                    <a href="#" class="product-image">
-
-                        <img
-                            src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/products/best-seller-4.jpg"
-                            alt="Lavender Dhoop Cones"
-                        >
-
-                    </a>
-
-
-                    <div class="product-info">
-
-                        <h3>
-                            Lavender Dhoop Cones
-                        </h3>
-
-
-                        <div class="product-rating">
-
-                            <span class="stars">
-                                ★★★★★
-                            </span>
-
-                            <span class="review-count">
-                                (271)
-                            </span>
-
-                        </div>
-
-
-                        <div class="product-price">
-                            ₹249
-                        </div>
-
-
-                        <a href="#" class="add-to-cart">
-                            ADD TO CART
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-            </div>
+                <?php endif; ?>
 
 
             <!-- RIGHT ARROW -->
@@ -702,7 +638,7 @@
 
         <!-- ACADEMY -->
 
-        <a href="#" class="featured-card">
+        <a href="<?php echo esc_url( home_url( '/academy/' ) ); ?>" class="featured-card">
 
             <div class="featured-content">
 
@@ -737,7 +673,7 @@
 
         <!-- BUSINESS PARTNER -->
 
-        <a href="#" class="featured-card">
+        <a href="<?php echo esc_url( home_url( '/partnership/' ) ); ?>" class="featured-card">
 
             <div class="featured-content">
 
@@ -891,84 +827,65 @@
 
         <div class="testimonial-grid">
 
+            <?php
+            if ( $woocommerce_active ) :
 
-            <article class="testimonial-card">
+                $homepage_reviews = get_comments(
+                    array(
+                        'status'  => 'approve',
+                        'type'    => 'review',
+                        'number'  => 3,
+                        'orderby' => 'comment_date_gmt',
+                        'order'   => 'DESC',
+                    )
+                );
 
-                <div class="quote-mark">“</div>
+                foreach ( $homepage_reviews as $review ) :
 
-                <div class="testimonial-rating">
-                    ★★★★★
-                </div>
+                    $rating = (int) get_comment_meta(
+                        $review->comment_ID,
+                        'rating',
+                        true
+                    );
 
-                <p>
-                    The fragrance is so natural and long
-                    lasting. Truly premium quality products.
-                </p>
+                    if ( $rating < 1 ) {
+                        continue;
+                    }
 
-                <div class="testimonial-author">
+                    $author_name = $review->comment_author
+                        ? $review->comment_author
+                        : 'Customer';
 
-                    <div class="author-avatar">
-                        N
-                    </div>
+                    $initial = strtoupper( substr( trim( $author_name ), 0, 1 ) );
+                    ?>
 
-                    <strong>Neha Sharma</strong>
+                    <article class="testimonial-card">
 
-                </div>
+                        <div class="quote-mark">“</div>
 
-            </article>
+                        <div class="testimonial-rating">
+                            <?php echo esc_html( str_repeat( '★', max( 1, min( 5, $rating ) ) ) ); ?>
+                        </div>
 
+                        <p>
+                            <?php echo esc_html( wp_trim_words( $review->comment_content, 35, '...' ) ); ?>
+                        </p>
 
-            <article class="testimonial-card">
+                        <div class="testimonial-author">
 
-                <div class="quote-mark">“</div>
+                            <div class="author-avatar">
+                                <?php echo esc_html( $initial ); ?>
+                            </div>
 
-                <div class="testimonial-rating">
-                    ★★★★★
-                </div>
+                            <strong><?php echo esc_html( $author_name ); ?></strong>
 
-                <p>
-                    Low smoke, amazing aroma and beautiful
-                    packaging. Highly recommended!
-                </p>
+                        </div>
 
-                <div class="testimonial-author">
+                    </article>
 
-                    <div class="author-avatar">
-                        R
-                    </div>
+                <?php endforeach; ?>
 
-                    <strong>Rohit Mehta</strong>
-
-                </div>
-
-            </article>
-
-
-            <article class="testimonial-card">
-
-                <div class="quote-mark">“</div>
-
-                <div class="testimonial-rating">
-                    ★★★★★
-                </div>
-
-                <p>
-                    I started my business after joining their
-                    academy. Best decision ever!
-                </p>
-
-                <div class="testimonial-author">
-
-                    <div class="author-avatar">
-                        P
-                    </div>
-
-                    <strong>Pooja Verma</strong>
-
-                </div>
-
-            </article>
-
+            <?php endif; ?>
 
         </div>
 
@@ -998,7 +915,10 @@
 
             </div>
 
-            <a href="<?php echo esc_url(home_url('/blog/')); ?>" class="view-all">
+            <a
+                href="<?php echo esc_url(home_url('/blog/')); ?>"
+                class="view-all"
+            >
                 VIEW ALL →
             </a>
 
@@ -1009,117 +929,133 @@
 
         <div class="blog-grid">
 
+            <?php
 
-            <!-- BLOG 1 -->
+            $latest_posts = new WP_Query(array(
+                'post_type'      => 'post',
+                'posts_per_page' => 3,
+                'post_status'    => 'publish',
+            ));
 
-            <article class="blog-card">
+            if ($latest_posts->have_posts()) :
 
-                <a href="#" class="blog-image">
+                while ($latest_posts->have_posts()) :
+                    $latest_posts->the_post();
 
-                    <img
-                        src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog/blog-1.jpg"
-                        alt="Understanding the Art of Fragrance"
+                    $categories = get_the_category();
+
+            ?>
+
+                <article class="blog-card">
+
+                    <!-- FEATURED IMAGE -->
+
+                    <a
+                        href="<?php the_permalink(); ?>"
+                        class="blog-image"
                     >
 
-                </a>
+                        <?php if (has_post_thumbnail()) : ?>
 
-                <div class="blog-info">
+                            <?php the_post_thumbnail(
+                                'large',
+                                array(
+                                    'alt' => esc_attr(get_the_title())
+                                )
+                            ); ?>
 
-                    <span class="blog-category">
-                        FRAGRANCE
-                    </span>
+                        <?php else : ?>
 
-                    <h3>
-                        Understanding the Art of Fragrance
-                    </h3>
+                            <div class="blog-image-placeholder">
+                                Sugandhwale
+                            </div>
 
-                    <p>
-                        Discover how fragrances shape our
-                        spaces, rituals and everyday moments.
-                    </p>
+                        <?php endif; ?>
 
-                    <a href="#" class="read-more">
-                        READ MORE →
                     </a>
 
-                </div>
 
-            </article>
+                    <!-- BLOG CONTENT -->
 
+                    <div class="blog-info">
 
-            <!-- BLOG 2 -->
+                        <?php if (!empty($categories)) : ?>
 
-            <article class="blog-card">
+                            <span class="blog-category">
 
-                <a href="#" class="blog-image">
+                                <?php
+                                echo esc_html(
+                                    $categories[0]->name
+                                );
+                                ?>
 
-                    <img
-                        src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog/blog-2.jpg"
-                        alt="The Tradition of Incense in India"
-                    >
+                            </span>
 
-                </a>
-
-                <div class="blog-info">
-
-                    <span class="blog-category">
-                        TRADITION
-                    </span>
-
-                    <h3>
-                        The Tradition of Incense in India
-                    </h3>
-
-                    <p>
-                        Explore the cultural significance of
-                        incense and its place in Indian rituals.
-                    </p>
-
-                    <a href="#" class="read-more">
-                        READ MORE →
-                    </a>
-
-                </div>
-
-            </article>
+                        <?php endif; ?>
 
 
-            <!-- BLOG 3 -->
+                        <h3>
 
-            <article class="blog-card">
+                            <a href="<?php the_permalink(); ?>">
 
-                <a href="#" class="blog-image">
+                                <?php the_title(); ?>
 
-                    <img
-                        src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/blog/blog-3.jpg"
-                        alt="Creating a Fragrant Home"
-                    >
+                            </a>
 
-                </a>
+                        </h3>
 
-                <div class="blog-info">
 
-                    <span class="blog-category">
-                        HOME FRAGRANCE
-                    </span>
+                        <p>
 
-                    <h3>
-                        Creating a Fragrant Home
-                    </h3>
+                            <?php
 
-                    <p>
-                        Simple ways to bring beautiful,
-                        calming fragrances into your home.
-                    </p>
+                            $excerpt = get_the_excerpt();
 
-                    <a href="#" class="read-more">
-                        READ MORE →
-                    </a>
+                            if (empty($excerpt)) {
 
-                </div>
+                                $excerpt = wp_trim_words(
+                                    wp_strip_all_tags(
+                                        get_the_content()
+                                    ),
+                                    22,
+                                    '...'
+                                );
 
-            </article>
+                            }
 
+                            echo esc_html($excerpt);
+
+                            ?>
+
+                        </p>
+
+
+                        <a
+                            href="<?php the_permalink(); ?>"
+                            class="read-more"
+                        >
+                            READ MORE →
+                        </a>
+
+                    </div>
+
+                </article>
+
+            <?php
+
+                endwhile;
+
+                wp_reset_postdata();
+
+            else :
+
+            ?>
+
+                <p class="no-blog-posts">
+                    New stories are coming soon.
+                </p>
+
+            <?php endif; ?>
 
         </div>
 
