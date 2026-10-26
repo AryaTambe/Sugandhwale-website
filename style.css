@@ -5,8 +5,11 @@ Author: Sugandhwale
 Description: Custom WordPress theme for Sugandhwale.
 Version: 1.0
 */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
-/* Global reset */
+
+/* =========================================
+   GLOBAL RESET
+========================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +17,9 @@ Version: 1.0
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
+    scroll-padding-top: 90px;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -22,6 +27,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: #1f2a22;
     background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
 }
 
 img {
@@ -32,11 +41,42 @@ img {
 a {
     text-decoration: none;
     color: inherit;
+    transition:
+        color 0.25s ease,
+        opacity 0.25s ease,
+        transform 0.25s ease;
 }
 
 button {
     font-family: inherit;
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease;
 }
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+}
+
 
 /* =========================================
    SEARCH RESULTS
@@ -83,7 +123,9 @@ button {
 }
 
 
-/* PRODUCTS */
+/* =========================================
+   SEARCH PRODUCTS
+========================================= */
 
 .search-products {
     display: grid;
@@ -154,7 +196,9 @@ button {
 }
 
 
-/* NO RESULTS */
+/* =========================================
+   NO RESULTS
+========================================= */
 
 .search-no-results {
     padding: 80px 0;
@@ -190,8 +234,143 @@ button {
     color: #8c6a2f;
 }
 
+/* =========================================
+   FLOATING WHATSAPP CHAT
+========================================= */
 
-/* MOBILE */
+.sugandhwale-whatsapp {
+    position: fixed;
+
+    right: 24px;
+    bottom: 24px;
+
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px 18px 12px 14px;
+
+    background: #5f8f72;
+    color: #ffffff;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 0.3px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.14);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.sugandhwale-whatsapp:hover {
+    color: #ffffff;
+
+    background: #4f7d62;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================
+   WHATSAPP ICON
+========================================= */
+
+.sugandhwale-whatsapp-icon {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    color: #5f8f72;
+}
+
+.sugandhwale-whatsapp-icon svg {
+    width: 16px;
+    height: 16px;
+
+    display: block;
+
+    fill: currentColor;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .sugandhwale-whatsapp {
+        right: 16px;
+        bottom: 16px;
+
+        padding: 11px 15px 11px 12px;
+
+        font-size: 11px;
+
+        gap: 8px;
+    }
+
+    .sugandhwale-whatsapp-icon {
+        width: 23px;
+        height: 23px;
+    }
+
+    .sugandhwale-whatsapp-icon svg {
+        width: 15px;
+        height: 15px;
+    }
+
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .sugandhwale-whatsapp {
+        right: 16px;
+        bottom: 16px;
+
+        padding: 11px 15px 11px 12px;
+
+        font-size: 11px;
+
+        gap: 8px;
+    }
+
+    .sugandhwale-whatsapp-icon {
+        width: 23px;
+        height: 23px;
+
+        font-size: 14px;
+    }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
 
 @media (max-width: 900px) {
 
@@ -201,6 +380,10 @@ button {
 
 }
 
+
+/* =========================================
+   MOBILE
+========================================= */
 
 @media (max-width: 600px) {
 

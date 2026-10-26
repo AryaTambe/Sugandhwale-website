@@ -1,6 +1,3 @@
-
-
-
 <?php
 defined('ABSPATH') || exit;
 
@@ -30,11 +27,11 @@ get_header();
                     </p>
 
                     <a
-    href="<?php echo esc_url(home_url('/products/')); ?>"
-    class="cart-button"
->
-    CONTINUE SHOPPING →
-</a>
+                        href="<?php echo esc_url(home_url('/products/')); ?>"
+                        class="cart-button"
+                    >
+                        CONTINUE SHOPPING →
+                    </a>
 
                 </div>
 
@@ -300,7 +297,7 @@ get_header();
 
 
                             <a
-                                href="<?php echo esc_url(wc_get_page_permalink('shop')); ?>"
+                                href="<?php echo esc_url(home_url('/products/')); ?>"
                                 class="cart-continue"
                             >
                                 ← CONTINUE SHOPPING

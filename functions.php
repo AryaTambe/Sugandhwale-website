@@ -114,14 +114,6 @@ function sugandhwale_assets() {
             '1.0'
         );
 
-        wp_enqueue_script(
-            'sugandhwale-product-filter',
-            get_template_directory_uri() . '/assets/js/product-filter.js',
-            array(),
-            '1.0',
-            true
-        );
-
     }
 
 
@@ -181,6 +173,27 @@ function sugandhwale_assets() {
 
     /*
     =================================
+    BUSINESS PARTNER / SBPP PAGE
+    =================================
+    */
+
+    if (is_page('business-partner')) {
+
+        wp_enqueue_style(
+            'sugandhwale-partnership',
+            get_template_directory_uri() . '/assets/css/partnership.css',
+            array(
+                'sugandhwale-global',
+                'sugandhwale-header'
+            ),
+            '1.0'
+        );
+
+    }
+
+
+    /*
+    =================================
     CONTACT PAGE
     =================================
     */
@@ -217,39 +230,55 @@ function sugandhwale_assets() {
 
     }
 
+
+    /*
+    =================================
+    SINGLE PRODUCT PAGE
+    =================================
+    */
+
     if (is_singular('product')) {
 
-    wp_enqueue_style(
-        'sugandhwale-single-product',
-        get_template_directory_uri() . '/assets/css/product-single.css',
-        array('sugandhwale-global', 'sugandhwale-header'),
-        '1.0'
-    );
+        wp_enqueue_style(
+            'sugandhwale-single-product',
+            get_template_directory_uri() . '/assets/css/product-single.css',
+            array(
+                'sugandhwale-global',
+                'sugandhwale-header'
+            ),
+            '1.0'
+        );
 
-}
+        wp_enqueue_script(
+            'sugandhwale-single-product',
+            get_template_directory_uri() . '/assets/js/single-product.js',
+            array(),
+            '1.0',
+            true
+        );
 
-/*
-=================================
-CHECKOUT PAGE
-=================================
-*/
-
-if (is_page('checkout')) {
-
-    wp_enqueue_style(
-        'sugandhwale-checkout',
-        get_template_directory_uri() . '/assets/css/checkout.css',
-        array(
-            'sugandhwale-global',
-            'sugandhwale-header'
-        ),
-        '1.0'
-    );
-
-}
+    }
 
 
+    /*
+    =================================
+    CHECKOUT PAGE
+    =================================
+    */
 
+    if (is_page('checkout')) {
+
+        wp_enqueue_style(
+            'sugandhwale-checkout',
+            get_template_directory_uri() . '/assets/css/checkout.css',
+            array(
+                'sugandhwale-global',
+                'sugandhwale-header'
+            ),
+            '1.0'
+        );
+
+    }
 
 
     /*
@@ -267,6 +296,30 @@ if (is_page('checkout')) {
 
 
     /*
+=================================
+POLICY PAGES
+=================================
+*/
+
+if (
+    is_page('privacy-policy') ||
+    is_page('return-refund-policy') ||
+    is_page('terms-conditions') ||
+    is_page('faq')
+) {
+
+    wp_enqueue_style(
+        'sugandhwale-policy',
+        get_template_directory_uri() . '/assets/css/policy.css',
+        array('sugandhwale-global'),
+        '1.0'
+    );
+
+}
+
+
+
+    /*
     =================================
     HEADER JAVASCRIPT
     =================================
@@ -279,18 +332,10 @@ if (is_page('checkout')) {
         '1.0',
         true
     );
-    if (is_singular('product')) {
-
-    wp_enqueue_style(
-        'sugandhwale-single-product',
-        get_template_directory_uri() . '/assets/css/single-product.css',
-        array('sugandhwale-global', 'sugandhwale-header'),
-        '1.0'
-    );
 
     wp_enqueue_script(
-        'sugandhwale-single-product',
-        get_template_directory_uri() . '/assets/js/single-product.js',
+        'sugandhwale-main-js',
+        get_template_directory_uri() . '/assets/js/main.js',
         array(),
         '1.0',
         true
@@ -298,10 +343,8 @@ if (is_page('checkout')) {
 
 }
 
-}
-
-
 add_action('wp_enqueue_scripts', 'sugandhwale_assets');
+
 
 /**
  * WooCommerce Product Search
@@ -329,3 +372,88 @@ function sugandhwale_product_search($query) {
 }
 
 add_action('pre_get_posts', 'sugandhwale_product_search');
+
+function sugandhwale_handle_contact_form() {
+
+    if (
+        !isset($_POST['contact_nonce']) ||
+        !wp_verify_nonce(
+            sanitize_text_field(wp_unslash($_POST['contact_nonce'])),
+            'sugandhwale_contact_form'
+        )
+    ) {
+        wp_die('Security check failed. Please go back and try again.');
+    }
+
+    $name = isset($_POST['name'])
+        ? sanitize_text_field(wp_unslash($_POST['name']))
+        : '';
+
+    $email = isset($_POST['email'])
+        ? sanitize_email(wp_unslash($_POST['email']))
+        : '';
+
+    $phone = isset($_POST['phone'])
+        ? sanitize_text_field(wp_unslash($_POST['phone']))
+        : '';
+
+    $message = isset($_POST['message'])
+        ? sanitize_textarea_field(wp_unslash($_POST['message']))
+        : '';
+
+    if (
+        empty($name) ||
+        empty($email) ||
+        empty($phone) ||
+        empty($message)
+    ) {
+        wp_safe_redirect(
+            add_query_arg('contact', 'error', home_url('/contact/'))
+        );
+        exit;
+    }
+
+    if (!is_email($email)) {
+        wp_safe_redirect(
+            add_query_arg('contact', 'error', home_url('/contact/'))
+        );
+        exit;
+    }
+
+    $to = 'info@sugandhwale.com';
+
+    $subject = 'New Contact Form Message - Sugandhwale';
+
+    $body  = "New message received from the Sugandhwale website.\n\n";
+    $body .= "Name: " . $name . "\n";
+    $body .= "Email: " . $email . "\n";
+    $body .= "Phone: " . $phone . "\n\n";
+    $body .= "Message:\n" . $message . "\n";
+
+    $headers = array(
+        'Content-Type: text/plain; charset=UTF-8',
+        'Reply-To: ' . $name . ' <' . $email . '>',
+    );
+
+    $sent = wp_mail($to, $subject, $body, $headers);
+
+    wp_safe_redirect(
+        add_query_arg(
+            'contact',
+            $sent ? 'success' : 'error',
+            home_url('/contact/')
+        )
+    );
+
+    exit;
+}
+
+add_action(
+    'admin_post_nopriv_sugandhwale_contact',
+    'sugandhwale_handle_contact_form'
+);
+
+add_action(
+    'admin_post_sugandhwale_contact',
+    'sugandhwale_handle_contact_form'
+);

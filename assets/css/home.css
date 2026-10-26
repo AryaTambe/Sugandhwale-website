@@ -16,7 +16,6 @@
     background: #f8f6f1;
 }
 
-
 /* =========================================
    HERO SLIDER
 ========================================= */
@@ -47,7 +46,6 @@
     z-index: 1;
 }
 
-
 /* =========================================
    SLIDES
 ========================================= */
@@ -67,14 +65,12 @@
         visibility 0.8s ease;
 }
 
-
 .hero-slide.active {
     opacity: 1;
     visibility: visible;
 
     z-index: 1;
 }
-
 
 /* =========================================
    HERO IMAGE
@@ -96,7 +92,6 @@
 
     background: #0b281a;
 }
-
 
 /* =========================================
    ARROWS
@@ -141,16 +136,13 @@
     transform: translateY(-50%) scale(1.05);
 }
 
-
 .hero-prev {
     left: 25px;
 }
 
-
 .hero-next {
     right: 25px;
 }
-
 
 /* =========================================
    DOTS
@@ -173,7 +165,6 @@
     z-index: 5;
 }
 
-
 .hero-dot {
     width: 8px;
     height: 8px;
@@ -194,7 +185,6 @@
         background 0.2s ease;
 }
 
-
 .hero-dot.active {
     width: 24px;
 
@@ -205,6 +195,79 @@
     opacity: 1;
 }
 
+/* =========================================
+   PREMIUM MOTION POLISH
+========================================= */
+
+.hero-slider {
+    box-shadow: 0 18px 40px rgba(11, 40, 26, 0.08);
+}
+
+.hero-arrow,
+.hero-dot,
+.product-card,
+.featured-card,
+.video-testimonial,
+.testimonial-card,
+.blog-card {
+    will-change: transform, box-shadow, opacity;
+}
+
+@keyframes sectionReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(26px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.why-sugandhwale,
+.best-sellers,
+.featured-business,
+.video-testimonials,
+.testimonials,
+.latest-blog {
+    opacity: 0;
+    transform: translateY(26px);
+    animation: sectionReveal 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.best-sellers {
+    animation-delay: 0.12s;
+}
+
+.featured-business {
+    animation-delay: 0.16s;
+}
+
+.video-testimonials {
+    animation-delay: 0.2s;
+}
+
+.testimonials {
+    animation-delay: 0.24s;
+}
+
+.latest-blog {
+    animation-delay: 0.28s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .why-sugandhwale,
+    .best-sellers,
+    .featured-business,
+    .video-testimonials,
+    .testimonials,
+    .latest-blog {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+}
 
 /* =========================================
    CONTENT AFTER HERO
@@ -226,7 +289,6 @@
 
     min-height: 1200px;
 }
-
 
 /* =========================================
    TABLET
@@ -262,7 +324,6 @@
         margin-top: -180px;
     }
 }
-
 
 /* =========================================
    MOBILE
@@ -334,7 +395,6 @@
     overflow: hidden;
 }
 
-
 /* =========================================
    SUBTLE DECORATIVE BACKGROUND
 ========================================= */
@@ -365,7 +425,6 @@
     bottom: 10%;
 }
 
-
 /* =========================================
    CONTAINER
 ========================================= */
@@ -381,7 +440,6 @@
 
     z-index: 1;
 }
-
 
 /* =========================================
    TITLE
@@ -408,7 +466,6 @@
     letter-spacing: 0.2px;
 }
 
-
 /* =========================================
    BENEFITS GRID
 ========================================= */
@@ -423,7 +480,6 @@
 
     align-items: start;
 }
-
 
 /* =========================================
    BENEFIT ITEM
@@ -441,7 +497,6 @@
 .why-item:hover {
     transform: translateY(-5px);
 }
-
 
 /* =========================================
    ICON AREA
@@ -472,7 +527,6 @@
     position: relative;
 }
 
-
 /* Small inner ring */
 
 .why-icon::after {
@@ -486,7 +540,6 @@
 
     border: 1px solid rgba(154, 113, 45, 0.08);
 }
-
 
 /* =========================================
    SVG ICON
@@ -521,7 +574,6 @@
     stroke: #76521c;
 }
 
-
 /* =========================================
    BENEFIT TITLE
 ========================================= */
@@ -543,7 +595,6 @@
     color: #1c251f;
 }
 
-
 /* =========================================
    DESCRIPTION
 ========================================= */
@@ -564,7 +615,6 @@
 
     color: #77756e;
 }
-
 
 /* =========================================
    TABLET
@@ -590,7 +640,6 @@
     }
 
 }
-
 
 /* =========================================
    MOBILE
@@ -644,28 +693,6 @@
 }
 
 /* =========================================
-   SHOP BY CATEGORY
-========================================= */
-
-.shop-category {
-    width: 100%;
-
-    background: #f8f6f1;
-
-    padding: 55px 35px 70px;
-}
-
-
-.shop-category-container {
-    width: 100%;
-
-    max-width: 1400px;
-
-    margin: 0 auto;
-}
-
-
-/* =========================================
    SECTION HEADING
 ========================================= */
 
@@ -681,7 +708,6 @@
 
     margin-bottom: 30px;
 }
-
 
 .section-heading h2 {
 
@@ -705,7 +731,6 @@
     letter-spacing: 1px;
 }
 
-
 .heading-accent {
 
     color: #9a712d;
@@ -715,200 +740,7 @@
     line-height: 1;
 }
 
-
-/* =========================================
-   CATEGORY GRID
-========================================= */
-
-.category-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(6, minmax(0, 1fr));
-
-    gap: 13px;
-}
-
-
-/* =========================================
-   CATEGORY CARD
-========================================= */
-
-.category-card {
-
-    display: block;
-
-    overflow: hidden;
-
-    text-decoration: none;
-
-    background: #fbfaf7;
-
-    border: 1px solid #ddd8cc;
-
-    border-radius: 5px;
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
-}
-
-
-.category-card:hover {
-
-    transform: translateY(-5px);
-
-    border-color: #c8b99a;
-
-    box-shadow:
-        0 10px 25px rgba(30, 45, 35, 0.08);
-}
-
-
-/* =========================================
-   CATEGORY IMAGE
-========================================= */
-
-.category-image {
-
-    width: 100%;
-
-    aspect-ratio: 1.2 / 1;
-
-    overflow: hidden;
-
-    background: #e9e4d9;
-}
-
-
-.category-image img {
-
-    width: 100%;
-
-    height: 100%;
-
-    display: block;
-
-    object-fit: cover;
-
-    transition:
-        transform 0.5s ease;
-}
-
-
-.category-card:hover .category-image img {
-
-    transform: scale(1.05);
-}
-
-
-/* =========================================
-   CATEGORY INFORMATION
-========================================= */
-
-.category-info {
-
-    min-height: 92px;
-
-    padding: 13px 10px 14px;
-
-    text-align: center;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-}
-
-
-.category-info h3 {
-
-    margin: 0 0 9px;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    line-height: 1.3;
-
-    color: #202a23;
-}
-
-
-.category-info span {
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    font-size: 10.5px;
-
-    line-height: 1.3;
-
-    color: #9a712d;
-
-    transition:
-        color 0.2s ease;
-}
-
-
-.category-card:hover .category-info span {
-
-    color: #76521c;
-}
-
-
-/* =========================================
-   TABLET
-========================================= */
-
-@media (max-width: 1050px) {
-
-    .shop-category {
-
-        padding:
-            50px
-            25px
-            60px;
-    }
-
-
-    .category-grid {
-
-        grid-template-columns:
-            repeat(3, 1fr);
-
-        gap: 15px;
-    }
-
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
 @media (max-width: 600px) {
-
-    .shop-category {
-
-        padding:
-            45px
-            16px
-            55px;
-    }
-
 
     .section-heading {
 
@@ -917,46 +749,11 @@
         gap: 10px;
     }
 
-
     .section-heading h2 {
 
         font-size: 23px;
 
         letter-spacing: 0.6px;
-    }
-
-
-    .category-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap: 12px;
-    }
-
-
-    .category-info {
-
-        min-height: 82px;
-
-        padding:
-            11px
-            7px
-            12px;
-    }
-
-
-    .category-info h3 {
-
-        font-size: 12px;
-
-        margin-bottom: 7px;
-    }
-
-
-    .category-info span {
-
-        font-size: 9.5px;
     }
 
 }
@@ -974,7 +771,6 @@
     padding: 25px 35px 70px;
 }
 
-
 .best-sellers-container {
 
     width: 100%;
@@ -983,7 +779,6 @@
 
     margin: 0 auto;
 }
-
 
 /* =========================================
    HEADING
@@ -994,14 +789,12 @@
     margin-bottom: 28px;
 }
 
-
 .best-sellers-heading h2 {
 
     font-size: 26px;
 
     letter-spacing: 1px;
 }
-
 
 .heading-line {
 
@@ -1013,7 +806,6 @@
 
     display: block;
 }
-
 
 /* =========================================
    PRODUCT WRAPPER
@@ -1029,7 +821,6 @@
 
     width: 100%;
 }
-
 
 /* =========================================
    PRODUCT GRID
@@ -1047,7 +838,6 @@
     gap: 18px;
 }
 
-
 /* =========================================
    PRODUCT CARD
 ========================================= */
@@ -1063,22 +853,20 @@
     overflow: hidden;
 
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 
 .product-card:hover {
 
-    transform: translateY(-4px);
+    transform: translateY(-7px);
 
     border-color: #cfc3ac;
 
     box-shadow:
-        0 10px 25px rgba(20, 35, 25, 0.08);
+        0 20px 32px rgba(20, 35, 25, 0.12);
 }
-
 
 /* =========================================
    PRODUCT IMAGE
@@ -1097,7 +885,6 @@
     background: #eee9df;
 }
 
-
 .product-image img {
 
     width: 100%;
@@ -1112,12 +899,10 @@
         transform 0.45s ease;
 }
 
-
 .product-card:hover .product-image img {
 
     transform: scale(1.04);
 }
-
 
 /* =========================================
    PRODUCT INFO
@@ -1129,7 +914,6 @@
 
     text-align: center;
 }
-
 
 .product-info h3 {
 
@@ -1151,7 +935,6 @@
     min-height: 18px;
 }
 
-
 /* =========================================
    RATING
 ========================================= */
@@ -1169,7 +952,6 @@
     margin-bottom: 7px;
 }
 
-
 .stars {
 
     color: #b17b20;
@@ -1179,14 +961,12 @@
     letter-spacing: 1px;
 }
 
-
 .review-count {
 
     color: #77736c;
 
     font-size: 9px;
 }
-
 
 /* =========================================
    PRICE
@@ -1202,7 +982,6 @@
 
     margin-bottom: 12px;
 }
-
 
 /* =========================================
    ADD TO CART
@@ -1239,7 +1018,6 @@
         transform 0.2s ease;
 }
 
-
 .add-to-cart:hover {
 
     background: #173d29;
@@ -1248,7 +1026,6 @@
 
     color: #ffffff;
 }
-
 
 /* =========================================
    PRODUCT ARROWS
@@ -1283,7 +1060,6 @@
         transform 0.2s ease;
 }
 
-
 .product-arrow:hover {
 
     color: #9a712d;
@@ -1293,18 +1069,15 @@
         scale(1.15);
 }
 
-
 .product-prev {
 
     left: -38px;
 }
 
-
 .product-next {
 
     right: -38px;
 }
-
 
 /* =========================================
    TABLET
@@ -1320,7 +1093,6 @@
             60px;
     }
 
-
     .best-sellers-grid {
 
         grid-template-columns:
@@ -1329,12 +1101,10 @@
         gap: 15px;
     }
 
-
     .product-prev {
 
         left: -15px;
     }
-
 
     .product-next {
 
@@ -1342,7 +1112,6 @@
     }
 
 }
-
 
 /* =========================================
    MOBILE
@@ -1358,24 +1127,20 @@
             50px;
     }
 
-
     .best-sellers-heading {
 
         margin-bottom: 22px;
     }
-
 
     .best-sellers-heading h2 {
 
         font-size: 22px;
     }
 
-
     .heading-line {
 
         width: 25px;
     }
-
 
     .best-sellers-grid {
 
@@ -1385,7 +1150,6 @@
         gap: 10px;
     }
 
-
     .product-info {
 
         padding:
@@ -1394,7 +1158,6 @@
             12px;
     }
 
-
     .product-info h3 {
 
         font-size: 11px;
@@ -1402,18 +1165,15 @@
         min-height: 30px;
     }
 
-
     .stars {
 
         font-size: 9px;
     }
 
-
     .review-count {
 
         font-size: 8px;
     }
-
 
     .product-price {
 
@@ -1422,14 +1182,12 @@
         margin-bottom: 9px;
     }
 
-
     .add-to-cart {
 
         font-size: 8px;
 
         padding: 7px 8px;
     }
-
 
     .product-arrow {
 
@@ -1440,12 +1198,10 @@
         font-size: 14px;
     }
 
-
     .product-prev {
 
         left: -12px;
     }
-
 
     .product-next {
 
@@ -1467,7 +1223,6 @@
     padding: 0 35px 60px;
 }
 
-
 .featured-business-container {
 
     max-width: 1400px;
@@ -1483,7 +1238,6 @@
 
     gap: 18px;
 }
-
 
 /* =========================================
    FEATURED CARD
@@ -1509,19 +1263,17 @@
     text-decoration: none;
 
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 
 .featured-card:hover {
 
-    transform: translateY(-3px);
+    transform: translateY(-6px);
 
     box-shadow:
-        0 10px 25px rgba(20, 35, 25, 0.08);
+        0 18px 32px rgba(20, 35, 25, 0.10);
 }
-
 
 /* =========================================
    CONTENT
@@ -1539,7 +1291,6 @@
 
     justify-content: center;
 }
-
 
 .featured-content h3 {
 
@@ -1559,7 +1310,6 @@
     line-height: 1.15;
 }
 
-
 .featured-content p {
 
     margin: 0 0 14px;
@@ -1572,7 +1322,6 @@
 
     line-height: 1.5;
 }
-
 
 /* =========================================
    BUTTON
@@ -1600,12 +1349,10 @@
         background 0.2s ease;
 }
 
-
 .featured-card:hover .featured-button {
 
     background: #173d29;
 }
-
 
 /* =========================================
    IMAGE
@@ -1619,7 +1366,6 @@
 
     overflow: hidden;
 }
-
 
 .featured-image img {
 
@@ -1635,12 +1381,10 @@
         transform 0.5s ease;
 }
 
-
 .featured-card:hover .featured-image img {
 
     transform: scale(1.04);
 }
-
 
 /* =========================================
    TABLET
@@ -1656,14 +1400,12 @@
             50px;
     }
 
-
     .featured-business-container {
 
         grid-template-columns: 1fr;
     }
 
 }
-
 
 /* =========================================
    MOBILE
@@ -1679,7 +1421,6 @@
             45px;
     }
 
-
     .featured-card {
 
         min-height: 150px;
@@ -1688,19 +1429,16 @@
             1fr 0.9fr;
     }
 
-
     .featured-content {
 
         padding:
             15px 13px;
     }
 
-
     .featured-content h3 {
 
         font-size: 15px;
     }
-
 
     .featured-content p {
 
@@ -1711,128 +1449,78 @@
 
 }
 
-
 /* =========================================
    VIDEO TESTIMONIALS
 ========================================= */
 
 .video-testimonials {
     width: 100%;
-
     background: #f8f6f1;
-
     padding: 10px 35px 65px;
 }
 
-
 .video-testimonials-container {
     width: 100%;
-
     max-width: 1150px;
-
     margin: 0 auto;
 }
 
+.video-testimonials .section-title {
+    text-align: center;
+}
 
-/* =========================================
-   VIDEO GRID
-========================================= */
-
+/* Two videos */
 .video-testimonial-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
     gap: 22px;
-
-    max-width: 900px;
-
+    width: 100%;
+    max-width: 650px;
     margin: 0 auto;
 }
-
-
-/* =========================================
-   VIDEO CARD
-========================================= */
 
 .video-testimonial {
     position: relative;
-
     width: 100%;
-
+    min-width: 0;
     aspect-ratio: 9 / 16;
-
     overflow: hidden;
-
     border-radius: 8px;
-
     background: #111;
-
-    box-shadow:
-        0 8px 25px rgba(20, 35, 25, 0.08);
+    box-shadow: 0 8px 25px rgba(20, 35, 25, 0.08);
 }
-
 
 .testimonial-video {
-    width: 100%;
-
-    height: 100%;
-
     display: block;
-
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-
     background: #111;
 }
 
-
-/* =========================================
-   TABLET
-========================================= */
-
+/* Tablet */
 @media (max-width: 800px) {
-
     .video-testimonials {
-        padding:
-            10px
-            25px
-            55px;
+        padding: 10px 25px 55px;
     }
 
-
     .video-testimonial-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-
         gap: 16px;
     }
-
 }
 
-
-/* =========================================
-   MOBILE
-========================================= */
-
+/* Mobile */
 @media (max-width: 600px) {
-
     .video-testimonials {
-        padding:
-            5px
-            16px
-            50px;
+        padding: 5px 16px 50px;
     }
-
 
     .video-testimonial-grid {
-        grid-template-columns: 1fr;
-
-        max-width: 360px;
-
-        gap: 18px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        max-width: 100%;
     }
-
 }
 
 /* =========================================
@@ -1848,12 +1536,15 @@
     padding: 5px 35px 60px;
 }
 
-
 .testimonials-container {
 
     max-width: 1400px;
 
     margin: 0 auto;
+}
+
+.testimonials .ti-rating-text {
+    display: none;
 }
 
 
@@ -1871,7 +1562,6 @@
     margin: 0 auto;
 }
 
-
 .testimonial-card {
 
     position: relative;
@@ -1885,8 +1575,16 @@
     border-radius: 6px;
 
     min-height: 155px;
+
+    transition:
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.testimonial-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 30px rgba(18, 27, 22, 0.08);
+}
 
 .quote-mark {
 
@@ -1905,7 +1603,6 @@
     line-height: 1;
 }
 
-
 .testimonial-rating {
 
     color: #b27c20;
@@ -1920,7 +1617,6 @@
         8px;
 }
 
-
 .testimonial-card p {
 
     margin: 0 0 18px;
@@ -1932,7 +1628,6 @@
     line-height: 1.55;
 }
 
-
 .testimonial-author {
 
     display: flex;
@@ -1941,7 +1636,6 @@
 
     gap: 9px;
 }
-
 
 .author-avatar {
 
@@ -1966,14 +1660,12 @@
     font-weight: 600;
 }
 
-
 .testimonial-author strong {
 
     color: #263129;
 
     font-size: 9px;
 }
-
 
 @media (max-width: 800px) {
 
@@ -1984,7 +1676,6 @@
             20px
             50px;
     }
-
 
     .testimonial-grid {
 
@@ -2005,7 +1696,6 @@
     padding: 5px 35px 75px;
 }
 
-
 .latest-blog-container {
     width: 100%;
 
@@ -2013,7 +1703,6 @@
 
     margin: 0 auto;
 }
-
 
 /* =========================================
    HEADING ROW
@@ -2029,11 +1718,9 @@
     margin-bottom: 30px;
 }
 
-
 .blog-heading-row .section-heading {
     margin: 0;
 }
-
 
 /* =========================================
    VIEW ALL
@@ -2056,11 +1743,9 @@
         color 0.2s ease;
 }
 
-
 .view-all:hover {
     color: #18251d;
 }
-
 
 /* =========================================
    BLOG GRID
@@ -2074,7 +1759,6 @@
 
     gap: 20px;
 }
-
 
 /* =========================================
    BLOG CARD
@@ -2090,18 +1774,16 @@
     border-radius: 7px;
 
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 
 .blog-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
 
     box-shadow:
-        0 10px 25px rgba(20, 35, 25, 0.08);
+        0 18px 30px rgba(20, 35, 25, 0.10);
 }
-
 
 /* =========================================
    BLOG IMAGE
@@ -2119,7 +1801,6 @@
     background: #e9e4d9;
 }
 
-
 .blog-image img {
     width: 100%;
 
@@ -2133,11 +1814,9 @@
         transform 0.5s ease;
 }
 
-
 .blog-card:hover .blog-image img {
     transform: scale(1.04);
 }
-
 
 /* =========================================
    BLOG INFORMATION
@@ -2146,7 +1825,6 @@
 .blog-info {
     padding: 17px 18px 18px;
 }
-
 
 /* CATEGORY */
 
@@ -2163,7 +1841,6 @@
 
     letter-spacing: 1px;
 }
-
 
 /* TITLE */
 
@@ -2184,7 +1861,6 @@
     line-height: 1.25;
 }
 
-
 /* EXCERPT */
 
 .blog-info p {
@@ -2196,7 +1872,6 @@
 
     line-height: 1.6;
 }
-
 
 /* READ MORE */
 
@@ -2215,11 +1890,9 @@
         color 0.2s ease;
 }
 
-
 .read-more:hover {
     color: #9a712d;
 }
-
 
 /* =========================================
    TABLET
@@ -2242,7 +1915,6 @@
     }
 
 }
-
 
 /* =========================================
    MOBILE
@@ -2288,3 +1960,258 @@
 
 }
 
+/* =========================================
+   CINEMATIC HERO CONTENT
+========================================= */
+
+.hero-slide-content {
+    position: absolute;
+
+    left: 7.5%;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 5;
+
+    width: 390px;
+
+    text-align: left;
+
+    pointer-events: none;
+}
+
+/* =========================================
+   SMALL CATEGORY
+========================================= */
+
+.hero-slide-eyebrow {
+    display: flex;
+
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 22px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    color: #c4a15b;
+}
+
+.hero-slide-eyebrow::before {
+    content: "";
+
+    width: 32px;
+    height: 1px;
+
+    background: #c4a15b;
+
+    flex-shrink: 0;
+}
+
+/* =========================================
+   MAIN TITLE
+========================================= */
+
+.hero-slide-content h2 {
+    margin: 0;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(48px, 5vw, 76px);
+
+    font-weight: 400;
+
+    line-height: 0.96;
+
+    letter-spacing: -1.5px;
+
+    text-transform: uppercase;
+
+    color: #ffffff;
+}
+
+/* =========================================
+   SUBTEXT
+========================================= */
+
+.hero-slide-content p {
+    margin: 24px 0 0;
+
+    max-width: 270px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 400;
+
+    line-height: 1.6;
+
+    letter-spacing: 0.5px;
+
+    color: rgba(255,255,255,0.78);
+}
+
+/* =========================================
+   MINIMAL EXPLORE LINK
+========================================= */
+
+.hero-slide-button {
+    pointer-events: auto;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-top: 28px;
+
+    padding: 0 0 8px;
+
+    border: 0;
+
+    border-bottom: 1px solid rgba(196,161,91,0.8);
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    letter-spacing: 2.2px;
+
+    text-transform: uppercase;
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease,
+        gap 0.3s ease;
+}
+
+.hero-slide-button::after {
+    content: "→";
+
+    font-size: 15px;
+
+    line-height: 1;
+
+    color: #c4a15b;
+
+    transition: transform 0.3s ease;
+}
+
+.hero-slide-button:hover {
+    color: #c4a15b;
+
+    background: transparent;
+}
+
+.hero-slide-button:hover::after {
+    transform: translateX(5px);
+}
+
+/* =========================================
+   CAR FRAGRANCE
+========================================= */
+
+.hero-slide-content-car {
+    left: 7.5%;
+}
+
+/* =========================================
+   PERFUME
+========================================= */
+
+.hero-slide-content-perfume {
+    left: 7.5%;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .hero-slide-content {
+        left: 7%;
+
+        width: 300px;
+    }
+
+    .hero-slide-content h2 {
+        font-size: 48px;
+    }
+
+    .hero-slide-eyebrow {
+        margin-bottom: 16px;
+
+        font-size: 8px;
+    }
+
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .hero-slide-content {
+        left: 8%;
+
+        width: 220px;
+    }
+
+    .hero-slide-eyebrow {
+        gap: 8px;
+
+        margin-bottom: 13px;
+
+        font-size: 7px;
+
+        letter-spacing: 2px;
+    }
+
+    .hero-slide-eyebrow::before {
+        width: 20px;
+    }
+
+    .hero-slide-content h2 {
+        font-size: 34px;
+
+        line-height: 0.98;
+
+        letter-spacing: -0.5px;
+    }
+
+    .hero-slide-content p {
+        max-width: 190px;
+
+        margin-top: 15px;
+
+        font-size: 10px;
+
+        line-height: 1.5;
+    }
+
+    .hero-slide-button {
+        margin-top: 19px;
+
+        font-size: 7px;
+
+        letter-spacing: 1.7px;
+    }
+
+}

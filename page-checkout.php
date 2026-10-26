@@ -3,6 +3,115 @@ defined('ABSPATH') || exit;
 
 get_header();
 
+/*
+ * Handle WooCommerce's existing-order payment endpoint separately.
+ * The checkout page template also runs on /checkout/order-pay/{order_id}/.
+ * Use WooCommerce's own checkout shortcode here so it renders its native
+ * pay-for-order form and allows payment gateways (including Razorpay) to
+ * attach their required fields and scripts.
+ */
+if (is_wc_endpoint_url('order-pay')) {
+    echo '<main class="sw-checkout-page"><div class="sw-checkout-container">';
+    echo do_shortcode('[woocommerce_checkout]');
+    echo '</div></main>';
+
+    get_footer();
+    exit;
+}
+
+if (is_wc_endpoint_url('order-received')) {
+
+    $order_id = absint(get_query_var('order-received'));
+    $order    = $order_id ? wc_get_order($order_id) : false;
+
+    if (!$order) {
+        wp_safe_redirect(home_url('/'));
+        exit;
+    }
+
+    $order_key = isset($_GET['key'])
+        ? wc_clean(wp_unslash($_GET['key']))
+        : '';
+
+    if (
+        !$order_key ||
+        !hash_equals($order->get_order_key(), $order_key)
+    ) {
+        wp_safe_redirect(home_url('/'));
+        exit;
+    }
+    ?>
+
+    <main class="sw-order-received-page">
+
+        <div class="sw-order-received-container">
+
+            <div class="sw-order-received-header">
+
+                <div class="sw-order-received-eyebrow">
+                    ORDER CONFIRMED
+                </div>
+
+                <div class="sw-order-received-icon">
+                    ✓
+                </div>
+
+                <h1>
+                    Thank you for your order.
+                </h1>
+
+                <p>
+                    Your order has been received successfully.
+                    We'll confirm the details with you before dispatch.
+                </p>
+
+            </div>
+
+            <div class="sw-order-received-content">
+
+                <?php
+                wc_get_template(
+                    'checkout/thankyou.php',
+                    array(
+                        'order_id' => $order_id,
+                        'order'    => $order,
+                    )
+                );
+                ?>
+
+            </div>
+
+            <div class="sw-order-received-actions">
+
+                <a
+                    href="<?php echo esc_url(home_url('/products/')); ?>"
+                    class="sw-order-received-button"
+                >
+                    Continue Shopping
+                </a>
+
+                <a
+                    href="<?php echo esc_url(home_url('/')); ?>"
+                    class="sw-order-received-link"
+                >
+                    Return Home
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <?php
+    get_footer();
+    exit;
+}
+?>
+
+
+
+<?php
 if (!function_exists('WC') || !WC()->cart || WC()->cart->is_empty()) {
     wp_safe_redirect(home_url('/cart/'));
     exit;
@@ -37,7 +146,7 @@ $checkout = WC()->checkout();
 
 
         <!-- =========================================
-             CHECKOUT FORM
+             BEFORE CHECKOUT FORM
         ========================================= -->
 
         <?php
@@ -47,6 +156,10 @@ $checkout = WC()->checkout();
         );
         ?>
 
+
+        <!-- =========================================
+             CHECKOUT FORM
+        ========================================= -->
 
         <form
             name="checkout"
@@ -303,7 +416,7 @@ $checkout = WC()->checkout();
 
                 <?php
                 do_action(
-                    'woocommerce_checkout_after_customer_details'
+                    'woocommerce_checkout_order_notes'
                 );
                 ?>
 
@@ -336,19 +449,19 @@ $checkout = WC()->checkout();
 
 
                 <div class="sw-payment-content">
-
-                    <?php
-                    do_action(
-                        'woocommerce_checkout_order_review'
-                    );
-                    ?>
-
+                    <div id="order_review" class="woocommerce-checkout-review-order">
+                        <?php do_action('woocommerce_checkout_order_review'); ?>
+                    </div>
                 </div>
 
             </section>
 
         </form>
 
+
+        <!-- =========================================
+             AFTER CHECKOUT FORM
+        ========================================= -->
 
         <?php
         do_action(

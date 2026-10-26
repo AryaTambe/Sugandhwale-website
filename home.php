@@ -1,32 +1,55 @@
 <?php get_header(); ?>
 
-<main class="blog-page">
+<main class="journal-page">
 
-    <!-- BLOG HERO -->
-    <section class="blog-hero">
+    <!-- =========================================
+         JOURNAL INTRO
+    ========================================= -->
 
-        <span class="blog-eyebrow">
-            The World of Sugandhwale
-        </span>
+    <section class="journal-intro">
 
-        <h1>
-            Stories, Fragrance <br>
-            <em>&amp; Tradition</em>
-        </h1>
+        <div class="journal-intro-inner">
 
-        <p>
-            Explore the stories behind fragrance, Indian traditions,
-            rituals, memories and the world of Sugandhwale.
-        </p>
+            <div class="journal-intro-left">
+
+                <span class="journal-kicker">
+                    Sugandhwale Journal
+                </span>
+
+                <h1>
+                    The art of
+                    <em>scent.</em>
+                </h1>
+
+            </div>
+
+
+            <div class="journal-intro-right">
+
+                <p>
+                    Stories, rituals, craftsmanship and the memories
+                    that live within fragrance.
+                </p>
+
+                <span class="journal-scroll">
+                    Explore the journal
+                    <span>↓</span>
+                </span>
+
+            </div>
+
+        </div>
 
     </section>
 
 
-    <!-- BLOG POSTS -->
+    <!-- =========================================
+         STORIES
+    ========================================= -->
 
-    <section class="blog-posts">
+    <section class="journal-stories">
 
-        <div class="blog-posts-container">
+        <div class="journal-container">
 
             <?php if (have_posts()) : ?>
 
@@ -41,32 +64,66 @@
 
                     <?php if ($post_count === 1) : ?>
 
-                        <!-- FEATURED POST -->
+                        <!-- =================================
+                             FEATURED STORY
+                        ================================= -->
 
-                        <article class="blog-featured-post">
+                        <article class="journal-featured">
 
-                            <a href="<?php the_permalink(); ?>" class="featured-image">
+                            <a
+                                href="<?php the_permalink(); ?>"
+                                class="journal-featured-image"
+                            >
 
                                 <?php if (has_post_thumbnail()) : ?>
 
-                                    <?php the_post_thumbnail('large'); ?>
+                                    <?php
+                                    the_post_thumbnail(
+                                        'large',
+                                        array(
+                                            'loading' => 'eager'
+                                        )
+                                    );
+                                    ?>
+
+                                <?php else : ?>
+
+                                    <div class="journal-image-placeholder"></div>
 
                                 <?php endif; ?>
 
                             </a>
 
 
-                            <div class="featured-content">
+                            <div class="journal-featured-content">
 
-                                <div class="post-category">
+                                <div class="journal-story-meta">
 
                                     <?php
                                     $categories = get_the_category();
 
-                                    if (!empty($categories)) {
-                                        echo esc_html($categories[0]->name);
-                                    }
+                                    if (!empty($categories)) :
                                     ?>
+
+                                        <span class="journal-category">
+                                            <?php
+                                            echo esc_html(
+                                                $categories[0]->name
+                                            );
+                                            ?>
+                                        </span>
+
+                                    <?php endif; ?>
+
+                                    <span class="journal-meta-line"></span>
+
+                                    <span>
+                                        <?php
+                                        echo esc_html(
+                                            get_the_date('F j, Y')
+                                        );
+                                        ?>
+                                    </span>
 
                                 </div>
 
@@ -82,43 +139,46 @@
                                 </h2>
 
 
-                                <p>
+                                <p class="journal-featured-excerpt">
 
                                     <?php
-                                    echo wp_trim_words(
-                                        get_the_excerpt(),
-                                        30,
-                                        '...'
+                                    echo esc_html(
+                                        wp_trim_words(
+                                            get_the_excerpt(),
+                                            34,
+                                            '...'
+                                        )
                                     );
                                     ?>
 
                                 </p>
 
 
-                                <div class="featured-meta">
+                                <div class="journal-featured-bottom">
 
-                                    <span>
-                                        <?php echo get_the_date('F j, Y'); ?>
+                                    <span class="journal-reading-time">
+
+                                        <?php
+                                        echo esc_html(
+                                            sugandhwale_reading_time()
+                                        );
+                                        ?>
+
                                     </span>
 
-                                    <span class="meta-dot"></span>
 
-                                    <span>
-                                        <?php echo sugandhwale_reading_time(); ?>
-                                    </span>
+                                    <a
+                                        href="<?php the_permalink(); ?>"
+                                        class="journal-read"
+                                    >
+
+                                        <span>Read story</span>
+
+                                        <strong>↗</strong>
+
+                                    </a>
 
                                 </div>
-
-
-                                <a
-                                    href="<?php the_permalink(); ?>"
-                                    class="read-story"
-                                >
-
-                                    Read Story
-                                    <span>→</span>
-
-                                </a>
 
                             </div>
 
@@ -128,32 +188,63 @@
                     <?php else : ?>
 
 
-                        <!-- NORMAL POST CARD -->
+                        <!-- =================================
+                             STANDARD STORY
+                        ================================= -->
 
-                        <article class="blog-card">
+                        <article class="journal-card">
 
-                            <a href="<?php the_permalink(); ?>" class="blog-card-image">
+                            <a
+                                href="<?php the_permalink(); ?>"
+                                class="journal-card-image"
+                            >
 
                                 <?php if (has_post_thumbnail()) : ?>
 
-                                    <?php the_post_thumbnail('medium_large'); ?>
+                                    <?php
+                                    the_post_thumbnail(
+                                        'medium_large'
+                                    );
+                                    ?>
+
+                                <?php else : ?>
+
+                                    <div class="journal-image-placeholder"></div>
 
                                 <?php endif; ?>
 
                             </a>
 
 
-                            <div class="blog-card-content">
+                            <div class="journal-card-content">
 
-                                <div class="post-category">
+                                <div class="journal-card-meta">
 
                                     <?php
                                     $categories = get_the_category();
 
-                                    if (!empty($categories)) {
-                                        echo esc_html($categories[0]->name);
-                                    }
+                                    if (!empty($categories)) :
                                     ?>
+
+                                        <span>
+                                            <?php
+                                            echo esc_html(
+                                                $categories[0]->name
+                                            );
+                                            ?>
+                                        </span>
+
+                                    <?php endif; ?>
+
+                                    <span class="journal-meta-dot"></span>
+
+                                    <span>
+                                        <?php
+                                        echo esc_html(
+                                            get_the_date('F j, Y')
+                                        );
+                                        ?>
+                                    </span>
 
                                 </div>
 
@@ -172,10 +263,12 @@
                                 <p>
 
                                     <?php
-                                    echo wp_trim_words(
-                                        get_the_excerpt(),
-                                        20,
-                                        '...'
+                                    echo esc_html(
+                                        wp_trim_words(
+                                            get_the_excerpt(),
+                                            22,
+                                            '...'
+                                        )
                                     );
                                     ?>
 
@@ -184,11 +277,12 @@
 
                                 <a
                                     href="<?php the_permalink(); ?>"
-                                    class="read-story"
+                                    class="journal-card-link"
                                 >
 
-                                    Read Story
-                                    <span>→</span>
+                                    Read story
+
+                                    <span>↗</span>
 
                                 </a>
 
@@ -199,15 +293,51 @@
 
                     <?php endif; ?>
 
-
                 <?php endwhile; ?>
+
+
+                <!-- =========================================
+                     PAGINATION
+                ========================================== -->
+
+                <?php
+
+                $pagination = paginate_links(
+                    array(
+                        'type'      => 'list',
+                        'prev_text' => '←',
+                        'next_text' => '→',
+                    )
+                );
+
+                if ($pagination) :
+                ?>
+
+                    <nav class="journal-pagination">
+
+                        <?php echo $pagination; ?>
+
+                    </nav>
+
+                <?php endif; ?>
 
 
             <?php else : ?>
 
-                <div class="no-posts">
 
-                    <h2>No stories yet.</h2>
+                <!-- =========================================
+                     EMPTY STATE
+                ========================================== -->
+
+                <div class="journal-empty">
+
+                    <span class="journal-kicker">
+                        The Journal
+                    </span>
+
+                    <h2>
+                        Stories are coming.
+                    </h2>
 
                     <p>
                         The world of Sugandhwale is still being written.
@@ -215,6 +345,7 @@
                     </p>
 
                 </div>
+
 
             <?php endif; ?>
 

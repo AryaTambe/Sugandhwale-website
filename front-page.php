@@ -12,7 +12,9 @@ $woocommerce_active = class_exists( 'WooCommerce' );
 
     <div class="hero-slider">
 
-        <!-- SLIDES -->
+        <!-- =========================================
+             SLIDE 1
+        ========================================= -->
 
         <div class="hero-slide active">
 
@@ -24,6 +26,10 @@ $woocommerce_active = class_exists( 'WooCommerce' );
         </div>
 
 
+        <!-- =========================================
+             SLIDE 2
+        ========================================= -->
+
         <div class="hero-slide">
 
             <img
@@ -34,27 +40,109 @@ $woocommerce_active = class_exists( 'WooCommerce' );
         </div>
 
 
+        <!-- =========================================
+             SLIDE 3 — CAR FRAGRANCE
+        ========================================= -->
+
         <div class="hero-slide">
 
             <img
                 src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero/hero-3.png"
-                alt="Sugandhwale Pooja Essentials"
+                alt="Sugandhwale Car Fragrance"
             >
+
+            <div class="hero-slide-content hero-slide-content-car">
+
+                <span class="hero-slide-eyebrow">
+                    SUGANDHWALE
+                </span>
+
+                <h2>
+                    Car Fragrance
+                </h2>
+
+                <p>
+                    Elevate every journey.
+                </p>
+
+                <a
+                    href="<?php
+                        $perfume_term = get_term_by(
+                            'slug',
+                            'perfumes',
+                            'product_cat'
+                        );
+
+                        echo (
+                            $perfume_term &&
+                            ! is_wp_error($perfume_term)
+                        )
+                            ? esc_url(get_term_link($perfume_term))
+                            : esc_url(home_url('/products/'));
+                    ?>"
+                    class="hero-slide-button"
+                >
+                    Explore
+                </a>
+
+            </div>
 
         </div>
 
+
+        <!-- =========================================
+             SLIDE 4 — PERFUMES
+        ========================================= -->
 
         <div class="hero-slide">
 
             <img
                 src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/hero/hero-4.png"
-                alt="Sugandhwale Pooja Kit"
+                alt="Sugandhwale Perfumes"
             >
+
+            <div class="hero-slide-content hero-slide-content-perfume">
+
+                <span class="hero-slide-eyebrow">
+                    SUGANDHWALE
+                </span>
+
+                <h2>
+                    Perfumes
+                </h2>
+
+                <p>
+                    Find your signature fragrance.
+                </p>
+
+                <a
+                    href="<?php
+                        $perfume_term = get_term_by(
+                            'slug',
+                            'perfumes',
+                            'product_cat'
+                        );
+
+                        echo (
+                            $perfume_term &&
+                            ! is_wp_error($perfume_term)
+                        )
+                            ? esc_url(get_term_link($perfume_term))
+                            : esc_url(home_url('/products/'));
+                    ?>"
+                    class="hero-slide-button"
+                >
+                    Explore
+                </a>
+
+            </div>
 
         </div>
 
 
-        <!-- LEFT ARROW -->
+        <!-- =========================================
+             LEFT ARROW
+        ========================================= -->
 
         <button
             class="hero-arrow hero-prev"
@@ -65,7 +153,9 @@ $woocommerce_active = class_exists( 'WooCommerce' );
         </button>
 
 
-        <!-- RIGHT ARROW -->
+        <!-- =========================================
+             RIGHT ARROW
+        ========================================= -->
 
         <button
             class="hero-arrow hero-next"
@@ -76,7 +166,9 @@ $woocommerce_active = class_exists( 'WooCommerce' );
         </button>
 
 
-        <!-- DOTS -->
+        <!-- =========================================
+             DOTS
+        ========================================= -->
 
         <div class="hero-dots">
 
@@ -279,195 +371,6 @@ $woocommerce_active = class_exists( 'WooCommerce' );
 </section>
 
 <!-- =========================================
-     SHOP BY CATEGORY
-========================================= -->
-
-<section class="shop-category">
-
-    <div class="shop-category-container">
-
-        <div class="section-heading">
-            <span class="heading-accent">✦</span>
-            <h2>Shop by Category</h2>
-            <span class="heading-accent">✦</span>
-        </div>
-
-
-        <div class="category-grid">
-
-
-            <!-- AGARBATTI -->
-
-            <a href="<?php
-                $term = get_term_by( 'slug', 'agarbatti', 'product_cat' );
-                echo ( $woocommerce_active && $term && ! is_wp_error( $term ) )
-                    ? esc_url( get_term_link( $term ) )
-                    : esc_url( home_url( '/products/' ) );
-            ?>" class="category-card">
-
-                <div class="category-image">
-                    <img
-                        src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/categories/agarbatti.jpg"
-                        alt="Agarbatti"
-                    >
-                </div>
-
-                <div class="category-info">
-
-                    <h3>Agarbatti</h3>
-
-                    <span>
-                        Explore Collection →
-                    </span>
-
-                </div>
-
-            </a>
-
-
-            <!-- PERFUMES -->
-
-            <a href="<?php
-                $term = get_term_by( 'slug', 'perfumes', 'product_cat' );
-                echo ( $woocommerce_active && $term && ! is_wp_error( $term ) )
-                    ? esc_url( get_term_link( $term ) )
-                    : esc_url( home_url( '/products/' ) );
-            ?>" class="category-card">
-
-                <div class="category-image">
-                    <img
-                        src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/categories/perfumes.jpg"
-                        alt="Perfumes"
-                    >
-                </div>
-
-                <div class="category-info">
-
-                    <h3>Perfumes</h3>
-
-                    <span>
-                        Explore Collection →
-                    </span>
-
-                </div>
-
-            </a>
-
-
-            <!-- HOME FRAGRANCE -->
-
-            <a href="<?php
-                $term = get_term_by( 'slug', 'home-fragrance', 'product_cat' );
-                echo ( $woocommerce_active && $term && ! is_wp_error( $term ) )
-                    ? esc_url( get_term_link( $term ) )
-                    : esc_url( home_url( '/products/' ) );
-            ?>" class="category-card">
-
-                <div class="category-image">
-                    <img
-                        src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/categories/home-fragrance.jpg"
-                        alt="Home Fragrance"
-                    >
-                </div>
-
-                <div class="category-info">
-
-                    <h3>Home Fragrance</h3>
-
-                    <span>
-                        Explore Collection →
-                    </span>
-
-                </div>
-
-            </a>
-
-
-            <!-- POOJA ESSENTIALS -->
-
-            <a href="<?php
-                $term = get_term_by( 'slug', 'pooja-essentials', 'product_cat' );
-                echo ( $woocommerce_active && $term && ! is_wp_error( $term ) )
-                    ? esc_url( get_term_link( $term ) )
-                    : esc_url( home_url( '/products/' ) );
-            ?>" class="category-card">
-
-                <div class="category-image">
-                    <img
-                        src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/categories/pooja-essentials.jpg"
-                        alt="Pooja Essentials"
-                    >
-                </div>
-
-                <div class="category-info">
-
-                    <h3>Pooja Essentials</h3>
-
-                    <span>
-                        Explore Collection →
-                    </span>
-
-                </div>
-
-            </a>
-
-
-            <!-- GIFT HAMPERS -->
-
-            <a href="#" class="category-card">
-
-                <div class="category-image">
-                    <img
-                        src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/categories/gift-hampers.jpg"
-                        alt="Gift Hampers"
-                    >
-                </div>
-
-                <div class="category-info">
-
-                    <h3>Gift Hampers</h3>
-
-                    <span>
-                        Explore Collection →
-                    </span>
-
-                </div>
-
-            </a>
-
-
-            <!-- ACADEMY -->
-
-            <a href="<?php echo esc_url( home_url( '/academy/' ) ); ?>" class="category-card">
-
-                <div class="category-image">
-
-                    <img
-                        src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/categories/academy.jpg"
-                        alt="Agarbatti Manufacturing Academy"
-                    >
-
-                </div>
-
-                <div class="category-info">
-
-                    <h3>Agarbatti Manufacturing Academy</h3>
-
-                    <span>
-                        Explore Course →
-                    </span>
-
-                </div>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =========================================
      BEST SELLERS
 ========================================= -->
 
@@ -632,82 +535,7 @@ $woocommerce_active = class_exists( 'WooCommerce' );
      FEATURED BUSINESS SECTIONS
 ========================================= -->
 
-<section class="featured-business">
 
-    <div class="featured-business-container">
-
-        <!-- ACADEMY -->
-
-        <a href="<?php echo esc_url( home_url( '/academy/' ) ); ?>" class="featured-card">
-
-            <div class="featured-content">
-
-                <h3>
-                    Agarbatti Manufacturing
-                    Academy
-                </h3>
-
-                <p>
-                    Learn the art of agarbatti making from
-                    industry experts and start your own
-                    fragrance business.
-                </p>
-
-                <span class="featured-button">
-                    EXPLORE COURSE →
-                </span>
-
-            </div>
-
-            <div class="featured-image">
-
-                <img
-                    src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/features/academy.jpg"
-                    alt="Agarbatti Manufacturing Academy"
-                >
-
-            </div>
-
-        </a>
-
-
-        <!-- BUSINESS PARTNER -->
-
-        <a href="<?php echo esc_url( home_url( '/partnership/' ) ); ?>" class="featured-card">
-
-            <div class="featured-content">
-
-                <h3>
-                    Sugandhwale Business
-                    Partner Program (SBPP)
-                </h3>
-
-                <p>
-                    Become our business partner and grow
-                    together with India's trusted fragrance
-                    brand.
-                </p>
-
-                <span class="featured-button">
-                    BECOME A PARTNER →
-                </span>
-
-            </div>
-
-            <div class="featured-image">
-
-                <img
-                    src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/features/business-partner.jpg"
-                    alt="Sugandhwale Business Partner Program"
-                >
-
-            </div>
-
-        </a>
-
-    </div>
-
-</section>
 
 <!-- =========================================
      VIDEO TESTIMONIALS
@@ -731,73 +559,51 @@ $woocommerce_active = class_exists( 'WooCommerce' );
         <div class="video-testimonial-grid">
 
 
-            <!-- VIDEO 1 -->
+    <!-- VIDEO 1 -->
 
-            <div class="video-testimonial">
+    <div class="video-testimonial">
 
-                <video
-                    class="testimonial-video"
-                    controls
-                    preload="metadata"
-                    poster="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials/testimonial-1.jpg"
-                >
+        <video
+            class="testimonial-video"
+            controls
+            preload="metadata"
+        >
 
-                    <source
-                        src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/videos/testimonials/testimonial-1.mp4"
-                        type="video/mp4"
-                    >
+            <source
+                src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials/testimonials1.mp4"
+                type="video/mp4"
+            >
 
-                    Your browser does not support the video tag.
+            Your browser does not support the video tag.
 
-                </video>
+        </video>
 
-            </div>
-
-
-            <!-- VIDEO 2 -->
-
-            <div class="video-testimonial">
-
-                <video
-                    class="testimonial-video"
-                    controls
-                    preload="metadata"
-                    poster="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials/testimonial-2.jpg"
-                >
-
-                    <source
-                        src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/videos/testimonials/testimonial-2.mp4"
-                        type="video/mp4"
-                    >
-
-                    Your browser does not support the video tag.
-
-                </video>
-
-            </div>
+    </div>
 
 
-            <!-- VIDEO 3 -->
+    <!-- VIDEO 2 -->
 
-            <div class="video-testimonial">
+    <div class="video-testimonial">
 
-                <video
-                    class="testimonial-video"
-                    controls
-                    preload="metadata"
-                    poster="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials/testimonial-3.jpg"
-                >
+        <video
+            class="testimonial-video"
+            controls
+            preload="metadata"
+        >
 
-                    <source
-                        src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/videos/testimonials/testimonial-3.mp4"
-                        type="video/mp4"
-                    >
+            <source
+                src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/testimonials/testimonials2.mp4"
+                type="video/mp4"
+            >
 
-                    Your browser does not support the video tag.
+            Your browser does not support the video tag.
 
-                </video>
+        </video>
 
-            </div>
+    </div>
+
+
+</div>
 
 
         </div>
@@ -824,70 +630,7 @@ $woocommerce_active = class_exists( 'WooCommerce' );
 
         </div>
 
-
-        <div class="testimonial-grid">
-
-            <?php
-            if ( $woocommerce_active ) :
-
-                $homepage_reviews = get_comments(
-                    array(
-                        'status'  => 'approve',
-                        'type'    => 'review',
-                        'number'  => 3,
-                        'orderby' => 'comment_date_gmt',
-                        'order'   => 'DESC',
-                    )
-                );
-
-                foreach ( $homepage_reviews as $review ) :
-
-                    $rating = (int) get_comment_meta(
-                        $review->comment_ID,
-                        'rating',
-                        true
-                    );
-
-                    if ( $rating < 1 ) {
-                        continue;
-                    }
-
-                    $author_name = $review->comment_author
-                        ? $review->comment_author
-                        : 'Customer';
-
-                    $initial = strtoupper( substr( trim( $author_name ), 0, 1 ) );
-                    ?>
-
-                    <article class="testimonial-card">
-
-                        <div class="quote-mark">“</div>
-
-                        <div class="testimonial-rating">
-                            <?php echo esc_html( str_repeat( '★', max( 1, min( 5, $rating ) ) ) ); ?>
-                        </div>
-
-                        <p>
-                            <?php echo esc_html( wp_trim_words( $review->comment_content, 35, '...' ) ); ?>
-                        </p>
-
-                        <div class="testimonial-author">
-
-                            <div class="author-avatar">
-                                <?php echo esc_html( $initial ); ?>
-                            </div>
-
-                            <strong><?php echo esc_html( $author_name ); ?></strong>
-
-                        </div>
-
-                    </article>
-
-                <?php endforeach; ?>
-
-            <?php endif; ?>
-
-        </div>
+        <?php echo do_shortcode('[trustindex no-registration=google]'); ?>
 
     </div>
 

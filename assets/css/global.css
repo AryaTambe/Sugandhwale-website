@@ -81,7 +81,7 @@
     color:
         rgba(255, 255, 255, 0.68);
 
-    font-size: 11px;
+    font-size: 14px;
 
     line-height: 1.7;
 }
@@ -110,7 +110,7 @@
 
     text-decoration: none;
 
-    font-size: 9px;
+    font-size: 12px;
 
     transition:
         color 0.2s ease;
@@ -151,7 +151,7 @@
         Helvetica,
         sans-serif;
 
-    font-size: 10px;
+    font-size: 13px;
 
     font-weight: 600;
 
@@ -175,7 +175,7 @@
         Helvetica,
         sans-serif;
 
-    font-size: 10px;
+    font-size: 13px;
 
     line-height: 1.4;
 
@@ -206,7 +206,7 @@
     color:
         rgba(255, 255, 255, 0.58);
 
-    font-size: 10px;
+    font-size: 13px;
 
     line-height: 1.5;
 }
@@ -225,7 +225,7 @@
     color:
         rgba(255, 255, 255, 0.48);
 
-    font-size: 9px;
+    font-size: 12px;
 
     line-height: 1.5;
 }
@@ -272,7 +272,7 @@
     color:
         rgba(255, 255, 255, 0.42);
 
-    font-size: 8.5px;
+    font-size: 11px;
 
     line-height: 1.4;
 }
@@ -299,7 +299,7 @@
 
     text-decoration: none;
 
-    font-size: 8.5px;
+    font-size: 11px;
 
     transition:
         color 0.2s ease;
@@ -426,7 +426,7 @@
 
         margin-bottom: 14px;
 
-        font-size: 9px;
+        font-size: 10px;
     }
 
 
@@ -434,19 +434,19 @@
 
         margin-bottom: 8px;
 
-        font-size: 9px;
+        font-size: 10px;
     }
 
 
     .footer-contact p {
 
-        font-size: 9px;
+        font-size: 10px;
     }
 
 
     .footer-location {
 
-        font-size: 8.5px;
+        font-size: 9.5px;
     }
 
 

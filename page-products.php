@@ -176,6 +176,61 @@
             );
 
 
+            /*
+             * Show Agarbatti products first
+             * when viewing All Products.
+             */
+            if (!$category_slug) {
+
+                $agarbatti_ids = get_posts(array(
+                    'post_type'      => 'product',
+                    'post_status'    => 'publish',
+                    'posts_per_page' => -1,
+                    'fields'         => 'ids',
+                    'tax_query'      => array(
+                        array(
+                            'taxonomy' => 'product_cat',
+                            'field'    => 'slug',
+                            'terms'    => 'agarbatti',
+                        ),
+                    ),
+                    'orderby' => 'date',
+                    'order'   => 'DESC',
+                ));
+
+                $all_product_ids = get_posts(array(
+                    'post_type'      => 'product',
+                    'post_status'    => 'publish',
+                    'posts_per_page' => -1,
+                    'fields'         => 'ids',
+                    'orderby'        => 'date',
+                    'order'          => 'DESC',
+                ));
+
+                /*
+                 * Remove Agarbatti products from the
+                 * remaining products.
+                 */
+                $other_product_ids = array_values(
+                    array_diff(
+                        $all_product_ids,
+                        $agarbatti_ids
+                    )
+                );
+
+                /*
+                 * Agarbatti first, everything else after it.
+                 */
+                $ordered_product_ids = array_merge(
+                    $agarbatti_ids,
+                    $other_product_ids
+                );
+
+                $product_args['post__in'] = $ordered_product_ids;
+                $product_args['orderby']  = 'post__in';
+            }
+
+
             // Add category filter
 
             if ($category_slug) {

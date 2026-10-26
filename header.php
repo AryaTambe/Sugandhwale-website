@@ -86,9 +86,7 @@
                 Our Story
             </a>
 
-            <a href="<?php echo esc_url(home_url('/academy/')); ?>">
-                Academy
-            </a>
+            
 
         </nav>
 
@@ -262,10 +260,6 @@
 
         <a href="<?php echo esc_url(home_url('/our-story/')); ?>">
             Our Story
-        </a>
-
-        <a href="<?php echo esc_url(home_url('/academy/')); ?>">
-            Academy
         </a>
 
         <a href="<?php echo esc_url(home_url('/business-partner/')); ?>">

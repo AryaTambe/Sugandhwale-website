@@ -1,0 +1,688 @@
+/* =========================================
+   SUGANDHWALE — SINGLE JOURNAL ARTICLE
+========================================= */
+
+.blog-post {
+    background: #f7f5f0;
+    color: #163529;
+
+    padding-bottom: 0;
+}
+
+
+/* =========================================
+   ARTICLE HERO
+========================================= */
+
+.blog-hero {
+    padding: 105px 30px 75px;
+
+    text-align: center;
+}
+
+.blog-hero-inner {
+    max-width: 1000px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   CATEGORY
+========================================= */
+
+.blog-category {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 28px;
+
+    font-family:
+        "DM Sans",
+        Arial,
+        sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: #9a7a42;
+}
+
+.blog-category::before,
+.blog-category::after {
+    content: "";
+
+    width: 24px;
+    height: 1px;
+
+    background: #9a7a42;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.blog-title {
+    max-width: 950px;
+
+    margin: 0 auto;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(55px, 7vw, 94px);
+
+    font-weight: 400;
+
+    line-height: 0.9;
+
+    letter-spacing: -2.5px;
+
+    color: #163529;
+}
+
+
+/* =========================================
+   META
+========================================= */
+
+.blog-meta {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+    font-family:
+        "DM Sans",
+        Arial,
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 0.8px;
+
+    color: #777b76;
+}
+
+.meta-dot {
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: #a8864b;
+}
+
+
+/* =========================================
+   FEATURED IMAGE
+========================================= */
+
+.blog-featured-image {
+    width: min(1300px, calc(100% - 80px));
+
+    height: min(720px, 58vw);
+
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    background: #e5e0d6;
+}
+
+.blog-featured-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =========================================
+   ARTICLE CONTENT
+========================================= */
+
+.blog-content-wrapper {
+    padding: 90px 30px 110px;
+}
+
+.blog-content {
+    max-width: 720px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   CONTENT TYPOGRAPHY
+========================================= */
+
+.blog-content p {
+    margin: 0 0 26px;
+
+    font-family:
+        "DM Sans",
+        Arial,
+        sans-serif;
+
+    font-size: 15px;
+
+    line-height: 1.95;
+
+    color: #414c46;
+}
+
+
+.blog-content > p:first-child {
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 25px;
+
+    line-height: 1.5;
+
+    color: #263b31;
+}
+
+
+/* =========================================
+   HEADINGS
+========================================= */
+
+.blog-content h2 {
+    margin: 65px 0 22px;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 48px;
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    letter-spacing: -0.8px;
+
+    color: #163529;
+}
+
+.blog-content h3 {
+    margin: 50px 0 18px;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 36px;
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    color: #163529;
+}
+
+
+/* =========================================
+   LINKS
+========================================= */
+
+.blog-content a {
+    color: #8b6b32;
+
+    border-bottom: 1px solid rgba(139,107,50,0.4);
+
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.blog-content a:hover {
+    color: #163529;
+
+    border-color: #163529;
+}
+
+
+/* =========================================
+   IMAGES INSIDE ARTICLE
+========================================= */
+
+.blog-content img {
+    display: block;
+
+    width: auto;
+    max-width: 100%;
+    height: auto;
+
+    margin: 45px auto;
+}
+
+
+.blog-content figure {
+    margin: 50px 0;
+}
+
+.blog-content figure img {
+    width: 100%;
+
+    margin: 0;
+}
+
+.blog-content figcaption {
+    margin-top: 10px;
+
+    font-family:
+        "DM Sans",
+        Arial,
+        sans-serif;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+
+    letter-spacing: 0.5px;
+
+    color: #858782;
+}
+
+
+/* =========================================
+   BLOCKQUOTE
+========================================= */
+
+.blog-content blockquote {
+    position: relative;
+
+    margin: 55px 0;
+
+    padding: 10px 0 10px 35px;
+
+    border-left: 1px solid #a8864b;
+}
+
+.blog-content blockquote p {
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 29px;
+
+    line-height: 1.35;
+
+    font-style: italic;
+
+    color: #263b31;
+}
+
+
+/* =========================================
+   LISTS
+========================================= */
+
+.blog-content ul,
+.blog-content ol {
+    margin: 25px 0 30px;
+
+    padding-left: 25px;
+
+    font-family:
+        "DM Sans",
+        Arial,
+        sans-serif;
+
+    font-size: 15px;
+
+    line-height: 1.9;
+
+    color: #414c46;
+}
+
+.blog-content li {
+    margin-bottom: 8px;
+}
+
+
+/* =========================================
+   HORIZONTAL RULE
+========================================= */
+
+.blog-content hr {
+    width: 70px;
+
+    margin: 65px auto;
+
+    border: 0;
+
+    border-top: 1px solid #b6aa95;
+}
+
+
+/* =========================================
+   BOLD / EMPHASIS
+========================================= */
+
+.blog-content strong {
+    font-weight: 600;
+
+    color: #263b31;
+}
+
+
+/* =========================================
+   ARTICLE END
+========================================= */
+
+.blog-end {
+    padding: 105px 30px 120px;
+
+    background: #163529;
+
+    color: #ffffff;
+
+    text-align: center;
+}
+
+.blog-end-inner {
+    max-width: 700px;
+
+    margin: 0 auto;
+}
+
+
+.blog-end-label {
+    display: inline-block;
+
+    margin-bottom: 24px;
+
+    font-family:
+        "DM Sans",
+        Arial,
+        sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    letter-spacing: 3px;
+
+    color: #c4a15b;
+}
+
+
+.blog-end h2 {
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: clamp(48px, 6vw, 72px);
+
+    font-weight: 400;
+
+    line-height: 0.95;
+
+    letter-spacing: -1px;
+
+    color: #ffffff;
+}
+
+
+.blog-end p {
+    max-width: 470px;
+
+    margin: 25px auto 35px;
+
+    font-family:
+        "DM Sans",
+        Arial,
+        sans-serif;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    color: rgba(255,255,255,0.68);
+}
+
+
+.blog-end a {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid #c4a15b;
+
+    font-family:
+        "DM Sans",
+        Arial,
+        sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: #ffffff;
+
+    transition:
+        color 0.3s ease,
+        gap 0.3s ease;
+}
+
+.blog-end a span {
+    color: #c4a15b;
+
+    font-size: 16px;
+}
+
+.blog-end a:hover {
+    gap: 18px;
+
+    color: #c4a15b;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .blog-hero {
+        padding:
+            80px
+            25px
+            60px;
+    }
+
+    .blog-title {
+        font-size: 68px;
+    }
+
+    .blog-featured-image {
+        width: calc(100% - 50px);
+
+        height: 55vw;
+    }
+
+    .blog-content-wrapper {
+        padding:
+            70px
+            25px
+            85px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .blog-hero {
+        padding:
+            65px
+            18px
+            45px;
+    }
+
+    .blog-category {
+        margin-bottom: 20px;
+
+        font-size: 7px;
+
+        letter-spacing: 2.2px;
+    }
+
+    .blog-category::before,
+    .blog-category::after {
+        width: 17px;
+    }
+
+    .blog-title {
+        font-size: 49px;
+
+        line-height: 0.92;
+
+        letter-spacing: -1px;
+    }
+
+    .blog-meta {
+        gap: 8px;
+
+        margin-top: 22px;
+
+        font-size: 7px;
+    }
+
+    .meta-dot {
+        width: 2px;
+        height: 2px;
+    }
+
+
+    /* FEATURED IMAGE */
+
+    .blog-featured-image {
+        width: calc(100% - 30px);
+
+        height: 115vw;
+
+        max-height: 560px;
+    }
+
+
+    /* CONTENT */
+
+    .blog-content-wrapper {
+        padding:
+            55px
+            20px
+            70px;
+    }
+
+    .blog-content p {
+        font-size: 13px;
+
+        line-height: 1.85;
+    }
+
+    .blog-content > p:first-child {
+        font-size: 22px;
+
+        line-height: 1.5;
+    }
+
+    .blog-content h2 {
+        margin-top: 48px;
+
+        font-size: 39px;
+    }
+
+    .blog-content h3 {
+        margin-top: 40px;
+
+        font-size: 31px;
+    }
+
+    .blog-content img {
+        margin: 35px auto;
+    }
+
+    .blog-content blockquote {
+        margin: 40px 0;
+
+        padding-left: 22px;
+    }
+
+    .blog-content blockquote p {
+        font-size: 24px;
+    }
+
+
+    /* END */
+
+    .blog-end {
+        padding:
+            75px
+            20px
+            85px;
+    }
+
+    .blog-end-label {
+        font-size: 7px;
+
+        letter-spacing: 2.5px;
+    }
+
+    .blog-end h2 {
+        font-size: 47px;
+    }
+
+    .blog-end p {
+        font-size: 11px;
+
+        margin-top: 20px;
+    }
+
+}
