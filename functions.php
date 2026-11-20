@@ -19,6 +19,74 @@ function sugandhwale_setup() {
 
 add_action('after_setup_theme', 'sugandhwale_setup');
 
+function sugandhwale_is_privacy_policy_request() {
+
+    if (is_page('privacy-policy')) {
+        return true;
+    }
+
+    $request_path = isset($_SERVER['REQUEST_URI'])
+        ? wp_parse_url(wp_unslash($_SERVER['REQUEST_URI']), PHP_URL_PATH)
+        : '';
+
+    $privacy_policy_path = wp_parse_url(
+        home_url('/privacy-policy/'),
+        PHP_URL_PATH
+    );
+
+    return (
+        is_string($request_path) &&
+        is_string($privacy_policy_path) &&
+        untrailingslashit($request_path) === untrailingslashit($privacy_policy_path)
+    );
+}
+
+function sugandhwale_render_privacy_policy_fallback() {
+
+    if (
+        sugandhwale_is_privacy_policy_request() &&
+        file_exists(get_template_directory() . '/page-privacy-policy.php')
+    ) {
+        status_header(200);
+        add_filter('pre_get_document_title', function () {
+            return 'Privacy Policy - Sugandhwale';
+        });
+        include get_template_directory() . '/page-privacy-policy.php';
+        exit;
+    }
+
+}
+
+add_action('template_redirect', 'sugandhwale_render_privacy_policy_fallback');
+
+function sugandhwale_privacy_policy_url($url) {
+    return home_url('/privacy-policy/');
+}
+
+add_filter('privacy_policy_url', 'sugandhwale_privacy_policy_url');
+
+function sugandhwale_woocommerce_privacy_policy_text($text, $type) {
+
+    if ('checkout' !== $type) {
+        return $text;
+    }
+
+    $privacy_link = sprintf(
+        '<a href="%s" class="woocommerce-privacy-policy-link" target="_blank">%s</a>',
+        esc_url(home_url('/privacy-policy/')),
+        esc_html__('privacy policy', 'sugandhwale')
+    );
+
+    return str_replace('[privacy_policy]', $privacy_link, $text);
+}
+
+add_filter(
+    'woocommerce_get_privacy_policy_text',
+    'sugandhwale_woocommerce_privacy_policy_text',
+    10,
+    2
+);
+
 
 /**
  * Calculate Blog Reading Time
@@ -129,7 +197,7 @@ function sugandhwale_assets() {
             'sugandhwale-blog',
             get_template_directory_uri() . '/assets/css/blog.css',
             array('sugandhwale-global'),
-            '1.0'
+            '1.1'
         );
 
     }
@@ -275,24 +343,10 @@ function sugandhwale_assets() {
                 'sugandhwale-global',
                 'sugandhwale-header'
             ),
-            '1.0'
+            '1.2'
         );
 
     }
-
-
-    /*
-    =================================
-    FOOTER CSS
-    =================================
-    */
-
-    wp_enqueue_style(
-        'sugandhwale-footer',
-        get_template_directory_uri() . '/assets/css/footer.css',
-        array('sugandhwale-global'),
-        '1.0'
-    );
 
 
     /*
@@ -302,7 +356,7 @@ POLICY PAGES
 */
 
 if (
-    is_page('privacy-policy') ||
+    sugandhwale_is_privacy_policy_request() ||
     is_page('return-refund-policy') ||
     is_page('terms-conditions') ||
     is_page('faq')

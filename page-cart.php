@@ -77,7 +77,7 @@ get_header();
                                 );
                                 ?>
 
-                                <article class="cart-item">
+                                <article class="cart-item cart_item">
 
                                     <!-- IMAGE -->
                                     <div class="cart-item-image">
@@ -146,7 +146,7 @@ get_header();
 
                                                 <?php
 
-                                                woocommerce_quantity_input(
+                                                echo woocommerce_quantity_input(
                                                     array(
                                                         'input_name'  => "cart[{$cart_item_key}][qty]",
                                                         'input_id'    => "quantity-{$cart_item_key}",
