@@ -184,7 +184,7 @@ get_header();
                         <p>
                             Sugandhwale,<br>
                             102, 1st Floor, Shakuntal,<br>
-                            Beside Jipsi Corner, Shivaji Park,<br>
+                            Beside Gypsy Corner, Shivaji Park,<br>
                             Dadar (West), Mumbai – 400028
                         </p>
 
